@@ -1,0 +1,18 @@
+<div class='note' [style.background-color]="color">
+    <h3>{{ titulo }}</h3>
+    <p>{{ description }}</p>
+
+    <div [hidden]="tasks.length==0">
+        <h4>Tasks:</h4>
+        <ul *ngFor="let task of tasks">
+            <li>{{ task | json }}</li>
+        </ul>
+    </div>
+
+    <div [hidden]="tags.length==0">
+        <h4>Tags:</h4>
+        <ul *ngFor="let tag of tags">
+            <li>{{ tag | json }}</li>
+        </ul>
+    </div>
+</div>

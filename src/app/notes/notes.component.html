@@ -1,0 +1,8 @@
+<button class="btn btn-primary" (click)="limpa()">Limpar Todas as notas</button>
+<button class="btn btn-primary" (click)="atualiza()">Atualizar</button>
+<div *ngFor="let note of noteCollection">
+    
+    <app-single-note [titulo]="note.title" [description]="note.description"
+    [tasks]="note.tasks" [tags]="note.tags" [color]="note.color"
+    ></app-single-note>
+</div>

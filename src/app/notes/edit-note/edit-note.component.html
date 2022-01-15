@@ -1,0 +1,62 @@
+<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    
+    <app-input-field class="col-sm-12" formControlName="title"
+    [classeCss]=""
+    id="title" label="Título" [control]="formulario.get('title')"></app-input-field>
+    
+    <app-input-field class="col-sm-12" formControlName="description"
+    [classeCss]=""
+    id="description" label="Descrição" [control]="formulario.get('description')"></app-input-field>
+    
+    <div class="form-group">
+        <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tasks').length==0"
+        *ngFor="let item of getTasks('tasks',false)">
+            <button (click)='switchStateTask(item.id)' class="checkbox"></button>
+            <label class="form-control" readonly>{{ item.name }}</label>
+            <!-- <span type="text" class="form-control" readonly>{{ item }}</span> -->
+            <button class="btn btn-primary" (click)="deleteFromFormControlArray('tasks', item.id)">Delete</button>
+        </div>
+        <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tasks').length==0"
+        *ngFor="let item of getTasks('tasks',true)">
+            <button (click)='switchStateTask(item.id)' class="checkbox"></button>
+            <label style="text-decoration: line-through;" class="form-control" readonly>{{ item.name }}</label>
+            <button class="btn btn-primary" (click)="deleteFromFormControlArray('tasks', item.id)">Delete</button>
+        </div>
+        <div class="col-sm-12">
+            <label attr.for="tasks" class="control-label">Tasks</label>
+            <input type="text" class="form-control" id="input-task">
+            <button class="btn btn-primary" (click)="addToFormControlArray('tasks','input-task')">Add</button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tags').length==0"
+        *ngFor="let item of getFormControlValue('tags'); let i = index">
+            <label class="form-control" readonly>{{ item.name }}</label>
+            <button class="btn btn-primary" (click)="deleteFromFormControlArray('tags',i)">Delete</button>
+        </div>
+        <div class="col-sm-12">
+            <label attr.for="tags" class="control-label">Tags</label>
+            <input type="text" class="form-control" id="input-tag">
+            <button class="btn btn-primary" (click)="addToFormControlArray('tags','input-tag')">Add</button>
+        </div>
+    </div>
+
+    <app-input-field class="col-sm-12" formControlName="color"
+    [classeCss]="" type='color'
+    id="color" label="Cor" [control]="formulario.get('color')"></app-input-field>
+
+    <button style="margin-right:10px" type="submit" class="btn btn-primary" (click)='trySubmit()'>Submit</button>
+    <button style="border: 1px solid gray; margin-right:10px" type="submit"
+    class="btn btn-secundary" (click)='resetForm()'>Limpar</button>
+    <button style="border: 1px solid gray" type="submit"
+    class="btn btn-secundary" routerLink="/notes">Cancelar</button>
+
+</form>
+
+<div style="margin-top: 20px" *ngIf="formulario" >
+    <div>Detalhes do form</div>
+    <pre>Form válido: {{ formulario.valid }}</pre>
+    <!--pre>Form submetido: {{ form.submitted }}</pre -->
+    <pre>Valores: <br>{{ formulario.value | json }}</pre>
+</div>
