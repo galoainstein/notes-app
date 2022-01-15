@@ -1,7 +1,9 @@
+@import "./shared/scss-files/variables.scss";
+
 mat-toolbar {
     background: #c0c0c0;
     color: rgb(36, 36, 36);
-    height: 45px;
+    height: 60px;
     font-weight: bold;
 }
 
@@ -10,31 +12,30 @@ mat-toolbar {
 }
 
 mat-sidenav {
-    margin: 16px;
-    width: 200px;
+    width: 250px;
     border-right: none;
-    background: #002b5c;
-    color: white;
-    border-radius: 10px;
+    background: $primary-color-light;
+    color: $primary-color-heavy;
     padding: 16px;
     text-align: center;
 }
 
 .content {
     
-    border-radius: 10px;
+    border-radius: 15px;
     margin: 16px;
     margin-left: 32px;
 
-    padding: 30px;
+    padding: 30px 60px;
     justify-content: center;
     align-items: center;
 
-    background-color: rgb(185, 185, 185);
+    background-color: #fff;
     color: rgb(41, 41, 41);
 }
 
 mat-sidenav-container {
+    background-color: $tertiary-color-light;
     height: calc(100vh - 65px);
 }
 
@@ -55,3 +56,9 @@ mat-divider {
     margin-bottom: 16px;
     background-color: rgba(255, 255, 255, 0.5);
 }
+
+.img-logo {
+    content:url("./img/notes-app-logo.png");
+    height: 18px;
+    margin-left: 10px;
+ }

@@ -1,31 +1,33 @@
 <form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <input type="text" formControlName="title" id="title"
+    placeholder="Título" class="input-form">
+
+    <textarea type="text" formControlName="description"
+    placeholder="Descrição" class="input-form area-text"></textarea>
     
-    <app-input-field class="col-sm-12" formControlName="title"
-    [classeCss]=""
-    id="title" label="Título" [control]="formulario.get('title')"></app-input-field>
-    
-    <app-input-field class="col-sm-12" formControlName="description"
-    [classeCss]=""
-    id="description" label="Descrição" [control]="formulario.get('description')"></app-input-field>
-    
-    <div class="form-group">
-        <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tasks').length==0"
-        *ngFor="let item of getTasks('tasks',false)">
+    <div class="tasks-input">
+        <div class="tasks-undone task" *ngFor="let item of getTasks('tasks',false); let i = index">
             <button (click)='switchStateTask(item.id)' class="checkbox"></button>
-            <label class="form-control" readonly>{{ item.name }}</label>
-            <!-- <span type="text" class="form-control" readonly>{{ item }}</span> -->
-            <button class="btn btn-primary" (click)="deleteFromFormControlArray('tasks', item.id)">Delete</button>
+            <input class="line-text display-task" [value]="item.name" formControlName='tasks[i]'>
+            <button class="delete-task" (click)="deleteFromFormControlArray('tasks', item.id)">
+                <mat-icon class="delete-outline">delete_outline</mat-icon>
+                <!--mat-icon class="delete-full">delete</mat-icon-->
+            </button>
         </div>
-        <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tasks').length==0"
-        *ngFor="let item of getTasks('tasks',true)">
-            <button (click)='switchStateTask(item.id)' class="checkbox"></button>
-            <label style="text-decoration: line-through;" class="form-control" readonly>{{ item.name }}</label>
-            <button class="btn btn-primary" (click)="deleteFromFormControlArray('tasks', item.id)">Delete</button>
+        <div class="tasks-done task" *ngFor="let item of getTasks('tasks',true); let i = index">
+            <button (click)='switchStateTask(item.id)' class="checkbox checked"></button>
+            <input class="line-text display-task done" [value]="item.name" formControlName='tasks[i]'>
+            <button class="delete-task" (click)="deleteFromFormControlArray('tasks', item.id)">
+                <mat-icon class="delete-outline">delete_outline</mat-icon>
+                <!--mat-icon class="delete-full">delete</mat-icon-->
+            </button>
         </div>
-        <div class="col-sm-12">
-            <label attr.for="tasks" class="control-label">Tasks</label>
-            <input type="text" class="form-control" id="input-task">
-            <button class="btn btn-primary" (click)="addToFormControlArray('tasks','input-task')">Add</button>
+        <div class="task">
+            <input type="text" class="line-text display-task" id="input-task" placeholder="Nova Task">
+            <button class="add-task" (click)="addToFormControlArray('tasks','input-task')">
+                <mat-icon>add</mat-icon>
+            </button>
         </div>
     </div>
 
@@ -42,8 +44,7 @@
         </div>
     </div>
 
-    <app-input-field class="col-sm-12" formControlName="color"
-    [classeCss]="" type='color'
+    <app-input-field class="col-sm-12" formControlName="color" type='color'
     id="color" label="Cor" [control]="formulario.get('color')"></app-input-field>
 
     <button style="margin-right:10px" type="submit" class="btn btn-primary" (click)='trySubmit()'>Submit</button>
@@ -54,9 +55,8 @@
 
 </form>
 
-<div style="margin-top: 20px" *ngIf="formulario" >
+<!--div style="margin-top: 20px" *ngIf="formulario" >
     <div>Detalhes do form</div>
     <pre>Form válido: {{ formulario.valid }}</pre>
-    <!--pre>Form submetido: {{ form.submitted }}</pre -->
     <pre>Valores: <br>{{ formulario.value | json }}</pre>
-</div>
+</div-->

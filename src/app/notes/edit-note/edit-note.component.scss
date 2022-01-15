@@ -1,3 +1,96 @@
+@import "../../shared/scss-files/variables.scss";
+
 ul {
     padding: 0px
+};
+
+form{
+    background-color: getFrom($theme-white,"background");
 }
+
+.input-form, .display-task{
+    width: 100%;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+
+    background-color: getFrom($theme-white,"background-secundary");
+    color: getFrom($theme-white,"primary");
+    border: 0px;
+    
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+    
+    
+}
+
+input:focus, textarea:focus{
+    outline: none;
+}
+
+::placeholder{
+    color: getFrom($theme-white,"secundary")
+}
+
+#title{
+    height: 50px;
+    font-size: 15pt;
+    border-bottom: 3px solid getFrom($theme-white,"primary");
+}
+
+.line-text{
+    height: 45px;
+}
+
+.area-text{
+    height: 135px;
+}
+
+.task{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+
+    background-color: getFrom($theme-white,"background-secundary");
+    color: getFrom($theme-white,"primary");
+    border: 0px;
+    
+
+    font-family: 'Be Vietnam Pro', sans-serif;
+
+    .done{
+        text-decoration: line-through;
+    }
+    
+}
+.display-task{
+    border-radius: 8px;
+    margin-bottom: 0px;
+}
+
+.delete-task, .add-task{
+    border:0px;
+    color: getFrom($theme-white,"primary");
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.checkbox{
+    margin-left: 18px;
+    height: 12px;
+    width: 12px;
+    padding: 0px;
+    border-radius: 10px;
+    border: 2px solid getFrom($theme-white,"primary");
+    shape-outside: circle();
+
+    
+}
+
+.checked{
+    background-color: getFrom($theme-white,"primary");
+}
+

@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
@@ -27,7 +28,8 @@ registerLocaleData(localeBr, 'pt')
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    NotesRoutingModule
+    NotesRoutingModule,
+    MatIconModule
   ],
   exports:[
     NotesComponent,

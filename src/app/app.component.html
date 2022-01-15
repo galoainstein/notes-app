@@ -29,7 +29,7 @@
 </div> -->
 
 <mat-toolbar class="mat-elevation-z8">
-  <button class="side-bar-button" mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+  <button class="side-bar-button" mat-icon-button (click)="sidenav.toggle()">
       <mat-icon *ngIf="!sidenav.opened">
           menu
       </mat-icon>
@@ -37,7 +37,7 @@
           close
       </mat-icon>
   </button>
-  Responsive side navigation
+  <img class="img-logo" alt="Notes App">
 </mat-toolbar>
 
 <mat-sidenav-container>
