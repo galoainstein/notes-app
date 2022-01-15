@@ -7,14 +7,12 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
 
   private storage: Storage
+  public noteCollection = 'noteCollection'
+  public tagCollection = 'tagCollection'
 
   constructor() {
     this.storage = window.localStorage;
-
-    
   }
-
-  
 
   set(key: string, value: any): boolean {
     if (this.storage) {
@@ -24,11 +22,11 @@ export class LocalStorageService {
     return false;
   }
 
-  get(key: string): string {
+  get(key: string): any[] {
     if (this.storage){
-      return JSON.parse(this.storage.getItem(key) || '{}');
+      return JSON.parse(this.storage.getItem(key) || '[]');
     }
-    return '[]';
+    return [];
   }
 
   remove(key: string): boolean {

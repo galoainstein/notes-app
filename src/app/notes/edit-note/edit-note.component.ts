@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 
 @Component({
@@ -18,9 +21,8 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
   ) {
-    super();
+    super(new LocalStorageService);
    }
 
   ngOnInit(): void {
@@ -75,18 +77,13 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
   }
 
   sendToServer(){
-    var noteCollection:any = this.getNoteCollection()
-    if (noteCollection) {
-      noteCollection = JSON.parse(noteCollection)
-    } else {
-      noteCollection = []
-    }
+    var noteCollection:any = this.storage.get(this.storage.noteCollection)
     if (this.getFormControlValue('id') > noteCollection.length){
       noteCollection.push(this.formulario.value)
     } else {
       noteCollection[this.getFormControlValue('id')] = this.formulario.value
     }
-    localStorage.setItem('noteCollection',JSON.stringify(noteCollection))
+    this.storage.set(this.storage.noteCollection,noteCollection)
     window.location.pathname = '/notes';
   }
 

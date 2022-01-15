@@ -1,8 +1,5 @@
-<button class="btn btn-primary" (click)="limpa()">Limpar Todas as notas</button>
-<button class="btn btn-primary" (click)="atualiza()">Atualizar</button>
+<button class="btn btn-primary" (click)="clearNotes()">Limpar Todas as notas</button>
 <div *ngFor="let note of noteCollection">
     
-    <app-single-note [titulo]="note.title" [description]="note.description"
-    [tasks]="note.tasks" [tags]="note.tags" [color]="note.color"
-    ></app-single-note>
+    <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
 </div>

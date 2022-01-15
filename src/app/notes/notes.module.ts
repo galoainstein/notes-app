@@ -9,7 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NotesRoutingModule } from './notes-routing.module';
 
 import { NotesComponent } from './notes.component';
-import { NewNoteComponent } from './new-note/new-note.component';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 import { SingleNoteComponent } from './single-note/single-note.component';
 
 registerLocaleData(localeBr, 'pt')
@@ -17,7 +17,7 @@ registerLocaleData(localeBr, 'pt')
 @NgModule({
   declarations: [
     NotesComponent,
-    NewNoteComponent,
+    EditNoteComponent,
     SingleNoteComponent
   ],
   imports: [
@@ -31,10 +31,10 @@ registerLocaleData(localeBr, 'pt')
   ],
   exports:[
     NotesComponent,
-    NewNoteComponent
+    EditNoteComponent
   ],
   providers:[
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { provide: LOCALE_ID, useValue: 'pt' },
   ]
 })
 

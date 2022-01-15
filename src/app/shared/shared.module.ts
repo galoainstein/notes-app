@@ -24,6 +24,6 @@ import { InputTagsComponent } from './input-tags/input-tags.component';
   ],
   exports: [
     InputFieldComponent
-  ]
+  ],
 })
 export class SharedModule { }

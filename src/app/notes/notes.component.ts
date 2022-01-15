@@ -1,41 +1,36 @@
-import { LocalStorageService } from './../services/local-storage.service';
-import { Component, ContentChild, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
-  selector: 'notes',
+  selector: 'app-notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
 
-  
+  noteCollection?: any[];
 
-  //localStorage.set('first',{print: 'hello world'})
+  constructor(public storage:LocalStorageService) { 
+    window.addEventListener('storage', ()=>this.atualiza());
+  }
 
-
-  //noteCollection?:any
-
-  noteCollection:any = localStorage.getItem('noteCollection');
-
-  constructor() { }
 
   ngOnInit(): void {
     this.atualiza()
   }
 
   atualiza(){
-    console.log(this.noteCollection)
-    this.noteCollection = JSON.parse(this.noteCollection);
-    console.log(this.noteCollection)
+    this.noteCollection = this.storage.get(this.storage.noteCollection);
   }
 
-  limpa(){
-    localStorage.clear()
+  clearNotes(){
+    this.storage.remove(this.storage.noteCollection)
+    this.atualiza()
   }
-  /*getNoteCollection(){
-    if (localStorage.getItem('note-collection')){
-      this.noteCollection = JSON.parse(localStorage.getItem('note-collection'))
-    }
-  }*/
+
+  receiveChange($event:any) {
+    this.atualiza()
+  }
 
 }

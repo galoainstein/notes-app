@@ -1,19 +1,22 @@
 import { Directive } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+
 @Directive()
 export abstract class BaseFormComponent {
 
   formulario: FormGroup = new FormGroup({});
   inputArrayItem?: any; // used later on this.addToFormControlArray to get input value of array form elements
+  idParam?: string;
 
-  constructor() { }
+  constructor(public storage:LocalStorageService) { }
 
   abstract submit(): any;
 
   onSubmit() {}
 
-  resetar() {
+  resetForm() {
     Object.keys(this.formulario.controls).forEach(formControl => {
       const type:string = Object.prototype.toString.call(this.getFormControlValue(formControl))
       if (type == '[object Array]'){
@@ -22,6 +25,8 @@ export abstract class BaseFormComponent {
         this.setFormControlValue(formControl,false)
       } else if (formControl == 'color'){
         this.setFormControlValue(formControl,'#ffffff')
+      } else if (formControl == 'id'){
+        this.setFormControlValue(formControl,this.setID())
       } else {
         this.setFormControlValue(formControl,null)
       }
@@ -42,9 +47,28 @@ export abstract class BaseFormComponent {
     return validation.every(bool => bool)
   }
 
+  setID():any{
+    let id:any
+    if (this.idParam == 'new'){
+      let noteCollection = this.storage.get(this.storage.noteCollection)
+      id = noteCollection.length
+    } else {
+      id = this.idParam
+    }
+    return parseInt(id)
+  }
+
+  setFormByID(id:number){
+    let form = this.storage.get(this.storage.noteCollection)[id];
+    
+    Object.keys(this.formulario.controls).forEach(formControl => {
+      if (formControl != 'id'){
+        this.setFormControlValue(formControl, form[formControl]);
+      }
+    })
+  }
+
   addToFormControlArray(formControl: string, inputID: string){
-    console.log(formControl);
-    console.log(inputID)
     this.inputArrayItem = document.getElementById(inputID)
     const inputValue:string = this.inputArrayItem.value
     if (!this.isFieldBlank(inputValue)){
@@ -74,7 +98,7 @@ export abstract class BaseFormComponent {
     return this.getFormControlValue(formControl).filter((v:any) => v.completed == completed)
   }
 
-  resetIdValues(formControl:string){
+  resetIDValues(formControl:string){
     this.getFormControlValue(formControl).forEach((element:any, index:number) => {
       element.id = index
     });
@@ -83,7 +107,7 @@ export abstract class BaseFormComponent {
   deleteFromFormControlArray(formControl: string, id: number) {
     delete this.getFormControlValue(formControl)[id]
     this.setFormControlValue(formControl, this.getFormControlValue(formControl).filter((v:any) => v != null))
-    this.resetIdValues(formControl)
+    this.resetIDValues(formControl)
   }
   
   switchStateTask(id:number) {

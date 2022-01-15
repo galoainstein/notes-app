@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public storage:LocalStorageService) { }
 
   ngOnInit(): void {
+  }
+
+  limpa(){
+    this.storage.remove(this.storage.noteCollection)
+    //this.atualiza()
   }
 
 }

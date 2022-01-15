@@ -1,18 +1,23 @@
-<div class='note' [style.background-color]="color">
-    <h3>{{ titulo }}</h3>
-    <p>{{ description }}</p>
+<button (click)="redirectToEdit()" class='note' [style.background-color]="getColor()">
+<div>
+    
+    <button (click)="deleteNote()">Deletar</button>
+    <h3>{{ getTitle() }}</h3>
+    <h5>{{ getCreatedAt() }}</h5>
+    <p>{{ getDescription() }}</p>
+    <p>Id: {{ getID() }}</p>
 
-    <div [hidden]="tasks.length==0">
+    <div [hidden]="getTasks().length==0">
         <h4>Tasks:</h4>
-        <ul *ngFor="let task of tasks">
-            <li>{{ task | json }}</li>
+        <ul *ngFor="let task of getTasks()">
+            <li>{{ task }}</li>
         </ul>
     </div>
 
-    <div [hidden]="tags.length==0">
+    <div [hidden]="getTags().length==0">
         <h4>Tags:</h4>
-        <ul *ngFor="let tag of tags">
-            <li>{{ tag | json }}</li>
+        <ul *ngFor="let tag of getTags()">
+            <li>{{ tag }}</li>
         </ul>
     </div>
-</div>
+</div></button>
