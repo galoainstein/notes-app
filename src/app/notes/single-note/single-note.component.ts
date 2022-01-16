@@ -10,6 +10,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class SingleNoteComponent implements OnInit {
   
   @Input() note?:any;
+  @Input() styleTheme?:any;
 
   //implement media src
   //implement notificações e deadline
@@ -19,10 +20,10 @@ export class SingleNoteComponent implements OnInit {
   constructor(public storage:LocalStorageService) { }
   
   ngOnInit(): void {
-    
+    //this.setStyleColors()
   }
 
-  getStyleColors(){
+  setStyleColors(){
     Object.keys(this.note.themeColors).forEach(property => {
       document.documentElement.style.setProperty(`--${property}`, this.note.themeColors[property]);
     });
@@ -48,9 +49,7 @@ export class SingleNoteComponent implements OnInit {
     return listTagsNames
   }
 
-  getEditLink(){return `notes/edit/${this.note.id}`}
-
-  redirectToEdit(){window.location.pathname = this.getEditLink()}
+  getEditLink(){return `/notes/edit/${this.note.id}`}
 
   deleteNote(){
     if (confirm('Certeza que deseja apagar esta nota? Esta ação não pode ser revertida!')){

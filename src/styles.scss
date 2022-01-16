@@ -1,11 +1,14 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import "./app/shared/scss-files/variables.scss";
+
 body {
     padding: 0px;
 
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: $font-primary;
 }
 
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

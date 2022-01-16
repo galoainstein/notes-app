@@ -1,7 +1,7 @@
 @import "./shared/scss-files/variables.scss";
 
 mat-toolbar {
-    background: #c0c0c0;
+    background: $quaternary-color-light;
     color: rgb(36, 36, 36);
     height: 60px;
     font-weight: bold;
@@ -16,22 +16,14 @@ mat-sidenav {
     border-right: none;
     background: $primary-color-light;
     color: $primary-color-heavy;
-    padding: 16px;
     text-align: center;
 }
 
 .content {
     
-    border-radius: 15px;
-    margin: 16px;
-    margin-left: 32px;
-
-    padding: 30px 60px;
     justify-content: center;
     align-items: center;
 
-    background-color: var(--background);
-    color: rgb(41, 41, 41);
 }
 
 mat-sidenav-container {

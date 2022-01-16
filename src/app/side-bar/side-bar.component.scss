@@ -1,0 +1,61 @@
+@import "../shared/scss-files/variables.scss";
+
+.home-btn{
+    margin: 25px 0;
+    width: 100%;
+    height: 40px;
+    border: 0;
+    border-left: 3px solid $primary-color;
+    display: inline-flex;
+    background-color: $primary-color-light;
+    transition: .5s;
+}
+
+.home-btn:hover, .home-btn.selected:hover{
+    background-color: $secundary-color;
+}
+
+.home-btn.selected{
+    background-color: $tertiary-color;
+}
+
+h4{
+    padding-top: 9px;
+    padding-left: 12px;
+    font-size: 13pt;
+    color: $primary-color-heavy;
+}
+
+
+
+.delete-all-btn{
+    background-color: $tertiary-color-light;
+    color: $primary-color-heavy;
+    width: 210px;
+    height: 40px;
+    margin: 20px 20px;
+    border:0;
+    border-radius: 6px;
+    display: inline-flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: space-between;
+    transition: .5s;
+
+    .delete-all-txt{
+        font-weight: 500;
+        margin-right: 22px;
+    }
+
+    .delete-icon{
+        margin: 0px 8px;
+        //margin-top: 7px;
+    }
+}
+
+.delete-all-btn:hover{
+    background-color: $quaternary-color-light;
+    color: $primary-color-heavy;
+}

@@ -10,6 +10,16 @@ form{
     background-color: var(--background);
 }
 
+.note-editor{
+    border-radius: 15px;
+    margin: 45px 60px;
+
+    padding: 40px 60px;
+
+    background-color: var(--background);
+    color: rgb(41, 41, 41);
+}
+
 .input-form, .display-task{
     width: 100%;
     padding: 12px 18px;
@@ -38,6 +48,7 @@ input:focus, textarea:focus{
     height: 50px;
     font-size: 15pt;
     border-bottom: 3px solid var(--primary);
+    border-radius: 8px
 }
 
 .line-text{
@@ -46,6 +57,7 @@ input:focus, textarea:focus{
 
 .area-text{
     height: 135px;
+    border-radius: 8px;
 }
 
 .task{
@@ -76,14 +88,19 @@ input:focus, textarea:focus{
     margin-top: 4px;
     margin-right: 4px;
     background-color: transparent;
+    transition: .5s;
+}
+
+.delete-task:hover, .add-task:hover{
+    color: var(--secundary)
 }
 
 .checkbox{
     margin-left: 18px;
-    height: 12px;
-    width: 12px;
+    height: 13px;
+    width: 13px;
     padding: 0px;
-    border-radius: 10px;
+    border-radius: 4px;
     border: 2px solid var(--primary);
     shape-outside: circle();
     background-color: transparent;
@@ -94,4 +111,42 @@ input:focus, textarea:focus{
 .checked{
     background-color: var(--primary);
 }
+
+.btn-area{
+    display:-webkit-flex;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.btn {
+    margin-left:10px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--background-secundary);
+    color: var(--primary);
+    font-family: $font-primary;
+    font-size: 11pt;
+    height: 40px;
+    transition: .5s;
+}
+
+.btn:focus{
+    box-shadow: none;
+}
+
+.btn:hover{
+    background-color: var(--secundary);
+    color: var(--background);
+}
+
+.btn-primary, .btn-stay{
+    background-color: $primary-color;
+    color: $primary-color-light;
+}
+
+.btn-primary:hover, .btn-stay:hover{
+    background-color: $secundary-color;
+    color: $primary-color-heavy;
+}
+
 

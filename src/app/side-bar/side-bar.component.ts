@@ -27,4 +27,11 @@ export class SideBarComponent implements OnInit {
     //this.atualiza()
   }
 
+  isSelected(path = '/notes'){
+    if(window.location.pathname == path){
+      return "selected"
+    }
+    return ""
+  }
+
 }

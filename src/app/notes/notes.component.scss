@@ -1,0 +1,54 @@
+@import "../shared/scss-files/variables.scss";
+
+h3 {
+    font-size: 13pt;
+    margin-left: 1em;
+    margin-bottom: 0;
+}
+
+app-single-note{
+    height: 40vh;
+    width: 40vh;
+}
+
+.all-notes{
+    border-radius: 15px;
+    margin: 45px 60px;
+
+    padding: 0px;
+
+    color: $primary-color-heavy;
+}
+
+.notes-fav, .notes-unfav{
+    display: inline-flex;
+    height: 265px;
+}
+
+.new-note-btn{
+    background-color: $primary-color-light;
+    color: $secundary-color-heavy;
+    border:0;
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    margin: 0 1em 30px 1em;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .5s;
+}
+
+.new-note-txt{
+    margin-left: 25px;
+    font-family: $font-primary;
+}
+
+.add-icon{
+    margin-right: 16px;
+}
+
+.new-note-btn:hover{
+    background-color: $quaternary-color-light;
+    color: $primary-color-heavy
+}

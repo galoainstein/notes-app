@@ -38,14 +38,24 @@ export class NotesComponent implements OnInit {
     this.atualiza()
   }
 
-  getPinned(bool = true){
+  getFavs(bool = true){
     let collection:any[] = []
     this.noteCollection?.forEach((note:any) => {
-      if (note.pinned == bool){
+      if (note.fav == bool){
         collection.push(note)
       }
     })
     return collection
+  }
+
+  childThemes(id:number){
+    let css = `
+    --background: ${this.noteCollection![id]["themeColors"]["background"]};
+    --background-secundary: ${this.noteCollection![id]["themeColors"]["background-secundary"]};
+    --primary: ${this.noteCollection![id]["themeColors"]["primary"]};
+    --secundary: ${this.noteCollection![id]["themeColors"]["secundary"]}
+    `;
+    return css
   }
 
 }

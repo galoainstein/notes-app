@@ -33,7 +33,7 @@ export abstract class BaseFormComponent {
         "primary": "#777777",
         "secundary": "#b2b2b2"
       }],
-      pinned: [false],
+      fav: [false],
       createdAt: [null]
     });
     //this.formulario.reset();
@@ -73,9 +73,9 @@ export abstract class BaseFormComponent {
     })
   }
 
-  pin(){
-    this.setFormControlValue('pinned',!this.getFormControlValue('pinned'))
-  }
+  fav(){this.setFormControlValue('fav',!this.getFormControlValue('fav'))}
+
+  isFav(){return this.getFormControlValue('fav')}
 
   addToFormControlArray(formControl: string, inputID: string){
     this.inputArrayItem = document.getElementById(inputID)

@@ -1,26 +1,14 @@
-
-
-<button mat-button routerLink="" class="menu-button">
-    <h4>All Notes</h4>
-</button>
-
-<mat-divider></mat-divider>
-
-<div class="tags">
-    <button mat-button routerLink="" class="menu-button">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-    </button>
-    <button mat-button routerLink="notes/edit/new" class="menu-button">
-        <mat-icon>add</mat-icon>
-        <span>New Note</span>
-    </button>
-    <button mat-button class="menu-button">
-        <mat-icon>info</mat-icon>
-        <span>About</span>
+<div class="side-bar">
+    <button routerLink="/notes" class="home-btn" [ngClass]="isSelected()">
+        <h4>All Notes</h4>
     </button>
 
-    <mat-divider></mat-divider>
+    <div class="tags">
+        <span class="tag-title">TAGS</span>
+        <!--IMPLEMENT TAGS-->
+    </div>
+
+    <button class="delete-all-btn" (click)="limpa()">
+        <mat-icon class="delete-icon">delete</mat-icon><span class="delete-all-txt">Delete ALL Notes</span>
+    </button>
 </div>
-
-<button class="menu-button" (click)="limpa()" mat-button>Delete ALL Notes</button>

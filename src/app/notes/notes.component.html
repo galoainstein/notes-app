@@ -1,10 +1,16 @@
-<!-- <app-side-bar hidden="true" (changeEvent)="receiveChange($event)"></app-side-bar> -->
-<h4 [hidden]="getPinned().length==0">PINNED</h4>
-<div class="notes-pinned" *ngFor="let note of getPinned()">
-    <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
-</div>
+<div class="all-notes">
+    <button class="new-note-btn" routerLink="/notes/edit/new">
+        <span class="new-note-txt">Nova nota...</span>
+        <mat-icon class="add-icon">add</mat-icon>
+    </button>
 
-<h4 [hidden]="getPinned(false).length==0">ALL NOTES</h4>
-<div class="notes-unpinned" *ngFor="let note of getPinned(false)">
-    <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
+    <h3 [hidden]="getFavs().length==0">FAVORITES</h3>
+    <div class="notes-fav" *ngFor="let note of getFavs()">
+        <app-single-note [note]="note" (changeEvent)="receiveChange($event)" [styleTheme]="childThemes(note.id)"></app-single-note>
+    </div>
+
+    <h3 [hidden]="getFavs(false).length==0">ALL NOTES</h3>
+    <div class="notes-unfav" *ngFor="let note of getFavs(false)">
+        <app-single-note [note]="note" (changeEvent)="receiveChange($event)" [styleTheme]="childThemes(note.id)"></app-single-note>
+    </div>
 </div>

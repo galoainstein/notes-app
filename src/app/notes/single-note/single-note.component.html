@@ -1,8 +1,8 @@
-<button (click)="redirectToEdit()" class='note'>
+<button [routerLink]="getEditLink()" class='note' [style]="styleTheme">
 <div>
     
-    <button (click)="deleteNote()">Deletar</button>
-    <h3>{{ note.title }}</h3>
+    <button class="delete-btn" (click)="deleteNote()"><mat-icon>delete</mat-icon></button>
+    <h4>{{ note.title }}</h4>
     <h5>{{ note.createdAt }}</h5>
     <p>{{ note.description }}</p>
     <p>Id: {{ note.id }}</p>

@@ -82,18 +82,18 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
 
   submit() {};
 
-  trySubmit(){
+  trySubmit(bool = true){
     if (!this.isFormBlank()) {
       const myDate = this.correctDateFormat(formatDate(new Date(), 'd MMM', 'pt'));
       this.setFormControlValue('createdAt', myDate)
       this.setID()
-      this.sendToServer()
+      this.sendToServer(bool)
     } else {
       alert('Para criar uma nota, é necessário ter um título, uma descrição ou uma task!');
     }
   }
 
-  sendToServer(){
+  sendToServer(bool: boolean){
     var noteCollection:any = this.storage.get(this.storage.noteCollection)
     if (this.getFormControlValue('id') > noteCollection.length){
       noteCollection.push(this.formulario.value)
@@ -101,7 +101,9 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
       noteCollection[this.getFormControlValue('id')] = this.formulario.value
     }
     this.storage.set(this.storage.noteCollection,noteCollection)
-    window.location.pathname = '/notes';
+    if (bool){
+      window.location.pathname = '/notes';
+    }
   }
 
 }
