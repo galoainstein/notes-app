@@ -6,12 +6,12 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 @Directive()
 export abstract class BaseFormComponent {
 
-  formulario: FormGroup = new FormGroup({});
+  formulario = new FormGroup({});
   inputArrayItem?: any; // used later on this.addToFormControlArray to get input value of array form elements
   idParam?: string;
 
   constructor(
-    private formBuilder: FormBuilder,
+    public formBuilder: FormBuilder,
     public storage:LocalStorageService
   ) { }
 
@@ -103,10 +103,6 @@ export abstract class BaseFormComponent {
 
   setFormControlValue(formControl:string, value:any) {this.formulario.controls[formControl].setValue(value)}
 
-  getTasks(formControl:string, completed:boolean){
-    return this.getFormControlValue(formControl).filter((v:any) => v.completed == completed)
-  }
-
   resetIDValues(formControl:string){
     this.getFormControlValue(formControl).forEach((element:any, index:number) => {
       element.id = index
@@ -118,10 +114,5 @@ export abstract class BaseFormComponent {
     this.setFormControlValue(formControl, this.getFormControlValue(formControl).filter((v:any) => v != null))
     this.resetIDValues(formControl)
   }
-  
-  switchStateTask(id:number) {
-    this.getFormControlValue('tasks')[id].completed = !this.getFormControlValue('tasks')[id].completed
-  }
-
 
 }

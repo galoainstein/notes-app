@@ -1,7 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -54,16 +54,7 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
     Object.keys(this.themeColor!).forEach(property => {
       document.documentElement.style.setProperty(`--${property}`, this.themeColor![property]);
     });
-    //console.log(this.themePurple["background"])
-    //Object.keys(this.themePurple).forEach(property => {console.log(property)});
-    //console.log(1,window.getComputedStyle(document.documentElement).getPropertyValue('--background'));
-    // document.documentElement.style.setProperty("--background", this.themePurple["background"]);
-    // document.documentElement.style.setProperty("--background-secundary", this.themePurple["background-secundary"]);
-    // document.documentElement.style.setProperty("--primary", this.themePurple["primary"]);
-    // document.documentElement.style.setProperty("--secundary", this.themePurple["secundary"]);
   }
-
-  //getTeste(param:string){return this.themePurple[param]}
 
   ngOnDestroy(){
     this.inscricao?.unsubscribe();
@@ -71,9 +62,6 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
 
   checkValidations(){
     this.formulario.markAllAsTouched();
-    //this.resetForm()
-    //Not implemented
-    //this.onSubmit()
   }
 
   correctDateFormat(date:string){

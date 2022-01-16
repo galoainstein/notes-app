@@ -1,1 +1,24 @@
-<p>input-tasks works!</p>
+<div class="tasks-input">
+    <div class="tasks-undone task" *ngFor="let item of getTasks(false); let i = index">
+        <button (click)='switchStateTask(item.id)' class="checkbox"></button>
+        <input class="line-text display-task" [value]="item.name">
+        <button class="delete-task" (click)="deleteFromArray(item.id)">
+            <mat-icon class="delete-outline">delete_outline</mat-icon>
+        </button>
+    </div>
+    <div class="tasks-done task" *ngFor="let item of getTasks(true); let i = index">
+        <button (click)='switchStateTask(item.id)' class="checkbox checked"></button>
+        <input class="line-text display-task done" [value]="item.name">
+        <button class="delete-task" (click)="deleteFromArray(item.id)">
+            <mat-icon class="delete-outline">delete_outline</mat-icon>
+        </button>
+    </div>
+    <div class="task">
+        <input type="text" class="line-text display-task" id="input-task" placeholder="Nova Task">
+        <button class="add-task" (click)="addToArray()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
+
+<input type="text" hidden=true [(ngModel)]="tasksArray" id='teste'>

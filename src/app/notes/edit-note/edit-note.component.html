@@ -6,30 +6,10 @@
 
         <textarea type="text" formControlName="description"
         placeholder="Descrição" class="input-form area-text"></textarea>
+
+        <app-input-tasks formControlName="tasks"
+        [tasksArray]="getFormControlValue('tasks')"></app-input-tasks>
         
-        <div class="tasks-input">
-            <div class="tasks-undone task" *ngFor="let item of getTasks('tasks',false); let i = index">
-                <button (click)='switchStateTask(item.id)' class="checkbox"></button>
-                <input class="line-text display-task" [value]="item.name">
-                <button class="delete-task" (click)="deleteFromFormControlArray('tasks', item.id)">
-                    <mat-icon class="delete-outline">delete_outline</mat-icon>
-                </button>
-            </div>
-            <div class="tasks-done task" *ngFor="let item of getTasks('tasks',true); let i = index">
-                <button (click)='switchStateTask(item.id)' class="checkbox checked"></button>
-                <input class="line-text display-task done" [value]="item.name">
-                <button class="delete-task" (click)="deleteFromFormControlArray('tasks', item.id)">
-                    <mat-icon class="delete-outline">delete_outline</mat-icon>
-                    <!--mat-icon class="delete-full">delete</mat-icon-->
-                </button>
-            </div>
-            <div class="task">
-                <input type="text" class="line-text display-task" id="input-task" placeholder="Nova Task">
-                <button class="add-task" (click)="addToFormControlArray('tasks','input-task')">
-                    <mat-icon>add</mat-icon>
-                </button>
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tags').length==0"
@@ -44,8 +24,6 @@
             </div>
         </div>
 
-        <!--app-input-field class="col-sm-12" formControlName="color" type='color'
-        id="color" label="Cor" [control]="formulario.get('color')"></app-input-field-->
         <label for="color">Choose a color theme:</label>
         <select name="color" formControlName="color" id="color" (change)="setThemeColor()">
             <option value="white">White</option>

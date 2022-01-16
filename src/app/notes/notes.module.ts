@@ -19,7 +19,7 @@ registerLocaleData(localeBr, 'pt')
   declarations: [
     NotesComponent,
     EditNoteComponent,
-    SingleNoteComponent
+    SingleNoteComponent,
   ],
   imports: [
     CommonModule,
