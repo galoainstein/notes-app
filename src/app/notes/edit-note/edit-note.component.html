@@ -1,5 +1,5 @@
 <form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
-
+    
     <input type="text" formControlName="title" id="title"
     placeholder="Título" class="input-form">
 
@@ -9,7 +9,7 @@
     <div class="tasks-input">
         <div class="tasks-undone task" *ngFor="let item of getTasks('tasks',false); let i = index">
             <button (click)='switchStateTask(item.id)' class="checkbox"></button>
-            <input class="line-text display-task" [value]="item.name" formControlName='tasks[i]'>
+            <input class="line-text display-task" [value]="item.name">
             <button class="delete-task" (click)="deleteFromFormControlArray('tasks', item.id)">
                 <mat-icon class="delete-outline">delete_outline</mat-icon>
                 <!--mat-icon class="delete-full">delete</mat-icon-->
@@ -17,7 +17,7 @@
         </div>
         <div class="tasks-done task" *ngFor="let item of getTasks('tasks',true); let i = index">
             <button (click)='switchStateTask(item.id)' class="checkbox checked"></button>
-            <input class="line-text display-task done" [value]="item.name" formControlName='tasks[i]'>
+            <input class="line-text display-task done" [value]="item.name">
             <button class="delete-task" (click)="deleteFromFormControlArray('tasks', item.id)">
                 <mat-icon class="delete-outline">delete_outline</mat-icon>
                 <!--mat-icon class="delete-full">delete</mat-icon-->
@@ -44,10 +44,22 @@
         </div>
     </div>
 
-    <app-input-field class="col-sm-12" formControlName="color" type='color'
-    id="color" label="Cor" [control]="formulario.get('color')"></app-input-field>
+    <!--app-input-field class="col-sm-12" formControlName="color" type='color'
+    id="color" label="Cor" [control]="formulario.get('color')"></app-input-field-->
+    <label for="color">Choose a color theme:</label>
+    <select name="color" formControlName="color" id="color" (change)="setThemeColor()">
+        <option value="white">White</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="pink">Pink</option>
+        <option value="orange">Orange</option>
+        <option value="purple">Purple</option>
+        <option value="green">Green</option>
+    </select>
+    <br>
 
-    <button style="margin-right:10px" type="submit" class="btn btn-primary" (click)='trySubmit()'>Submit</button>
+    <button style="margin-right:10px" type="submit" class="btn btn-primary" (click)='trySubmit()'>Salvar</button>
     <button style="border: 1px solid gray; margin-right:10px" type="submit"
     class="btn btn-secundary" (click)='resetForm()'>Limpar</button>
     <button style="border: 1px solid gray" type="submit"
@@ -55,8 +67,8 @@
 
 </form>
 
-<!--div style="margin-top: 20px" *ngIf="formulario" >
+<!-- <div style="margin-top: 20px" *ngIf="formulario" >
     <div>Detalhes do form</div>
     <pre>Form válido: {{ formulario.valid }}</pre>
     <pre>Valores: <br>{{ formulario.value | json }}</pre>
-</div-->
+</div> -->

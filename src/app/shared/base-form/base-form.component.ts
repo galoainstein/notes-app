@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -10,26 +10,25 @@ export abstract class BaseFormComponent {
   inputArrayItem?: any; // used later on this.addToFormControlArray to get input value of array form elements
   idParam?: string;
 
-  constructor(public storage:LocalStorageService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    public storage:LocalStorageService
+  ) { }
 
   abstract submit(): any;
 
   onSubmit() {}
 
   resetForm() {
-    Object.keys(this.formulario.controls).forEach(formControl => {
-      const type:string = Object.prototype.toString.call(this.getFormControlValue(formControl))
-      if (type == '[object Array]'){
-        this.setFormControlValue(formControl,[])
-      } else if (type == '[object Boolean]'){
-        this.setFormControlValue(formControl,false)
-      } else if (formControl == 'color'){
-        this.setFormControlValue(formControl,'#ffffff')
-      } else if (formControl == 'id'){
-        this.setFormControlValue(formControl,this.setID())
-      } else {
-        this.setFormControlValue(formControl,null)
-      }
+    this.formulario = this.formBuilder.group({
+      id: [this.setID()],
+      title: [null],
+      description: [null],
+      tasks: [[]],
+      tags: [[]],
+      color: ["white"],
+      pinned: [false],
+      createdAt: [null]
     });
     //this.formulario.reset();
   }
@@ -67,6 +66,8 @@ export abstract class BaseFormComponent {
       }
     })
   }
+
+  getThemeName(){return `theme-${this.getFormControlValue("color")}`}
 
   addToFormControlArray(formControl: string, inputID: string){
     this.inputArrayItem = document.getElementById(inputID)

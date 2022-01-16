@@ -8,6 +8,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component';
 
+import colorThemes from 'src/app/shared/color-themes/color.themes.json'
+
 @Component({
   selector: 'app-edit-note',
   templateUrl: './edit-note.component.html',
@@ -15,14 +17,15 @@ import { BaseFormComponent } from 'src/app/shared/base-form/base-form.component'
 })
 export class EditNoteComponent extends BaseFormComponent implements OnInit {
 
-  
   inscricao?: Subscription;
+  themeColor? : { [key: string]: any }
+  
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-  ) {
-    super(new LocalStorageService);
+  constructor(private route: ActivatedRoute,) {
+    super(
+      new FormBuilder,
+      new LocalStorageService
+    );
    }
 
   ngOnInit(): void {
@@ -31,22 +34,35 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
       (params: any) => {this.idParam = params['id'];}
     );
 
-    this.formulario = this.formBuilder.group({
-      id: [this.setID()],
-      title: [null],
-      description: [null],
-      tasks: [[]],
-      tags: [[]],
-      color: ['#ffffff'],
-      pinned: [false],
-      createdAt: [null]
-    });
+    this.resetForm()
     
     if (this.idParam != 'new'){
       this.setFormByID(this.getFormControlValue('id'))
     }
+
+    this.setThemeColor()
     
   }
+
+  setThemeColor(){
+    colorThemes.forEach((element:any) => {
+      if (element.name == this.getFormControlValue('color')){
+        this.themeColor = element.colors
+      }
+    });
+    Object.keys(this.themeColor!).forEach(property => {
+      document.documentElement.style.setProperty(`--${property}`, this.themeColor![property]);
+    });
+    //console.log(this.themePurple["background"])
+    //Object.keys(this.themePurple).forEach(property => {console.log(property)});
+    //console.log(1,window.getComputedStyle(document.documentElement).getPropertyValue('--background'));
+    // document.documentElement.style.setProperty("--background", this.themePurple["background"]);
+    // document.documentElement.style.setProperty("--background-secundary", this.themePurple["background-secundary"]);
+    // document.documentElement.style.setProperty("--primary", this.themePurple["primary"]);
+    // document.documentElement.style.setProperty("--secundary", this.themePurple["secundary"]);
+  }
+
+  //getTeste(param:string){return this.themePurple[param]}
 
   ngOnDestroy(){
     this.inscricao?.unsubscribe();

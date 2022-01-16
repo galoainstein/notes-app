@@ -1,3 +1,4 @@
+@use "sass:string";
 @import "../../shared/scss-files/variables.scss";
 
 ul {
@@ -5,7 +6,8 @@ ul {
 };
 
 form{
-    background-color: getFrom($theme-white,"background");
+    //--theme1: green;
+    background-color: var(--background);
 }
 
 .input-form, .display-task{
@@ -13,8 +15,8 @@ form{
     padding: 12px 18px;
     margin-bottom: 20px;
 
-    background-color: getFrom($theme-white,"background-secundary");
-    color: getFrom($theme-white,"primary");
+    background-color: var(--background-secundary);
+    color: var(--primary);
     border: 0px;
     
 
@@ -29,13 +31,13 @@ input:focus, textarea:focus{
 }
 
 ::placeholder{
-    color: getFrom($theme-white,"secundary")
+    color: var(--secundary)
 }
 
 #title{
     height: 50px;
     font-size: 15pt;
-    border-bottom: 3px solid getFrom($theme-white,"primary");
+    border-bottom: 3px solid var(--primary);
 }
 
 .line-text{
@@ -54,8 +56,8 @@ input:focus, textarea:focus{
     margin-bottom: 20px;
     border-radius: 8px;
 
-    background-color: getFrom($theme-white,"background-secundary");
-    color: getFrom($theme-white,"primary");
+    background-color: var(--background-secundary);
+    color: var(--primary);
     border: 0px;
     
 
@@ -73,9 +75,10 @@ input:focus, textarea:focus{
 
 .delete-task, .add-task{
     border:0px;
-    color: getFrom($theme-white,"primary");
+    color: var(--primary);
     margin-top: 4px;
     margin-right: 4px;
+    background-color: transparent;
 }
 
 .checkbox{
@@ -84,13 +87,13 @@ input:focus, textarea:focus{
     width: 12px;
     padding: 0px;
     border-radius: 10px;
-    border: 2px solid getFrom($theme-white,"primary");
+    border: 2px solid var(--primary);
     shape-outside: circle();
 
     
 }
 
 .checked{
-    background-color: getFrom($theme-white,"primary");
+    background-color: var(--primary);
 }
 

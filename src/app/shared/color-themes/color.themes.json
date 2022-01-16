@@ -1,0 +1,81 @@
+[
+    {
+        "name":"white",
+        "colors": {
+            "background": "#fff",
+            "background-secundary": "#efefef",
+            "primary": "#777777",
+            "secundary": "#b2b2b2"
+        }
+    },
+
+    {
+        "name":"red",
+        "colors": {
+            "background": "#ffcccc",
+            "background-secundary": "#f9aaaa",
+            "primary": "#680707",
+            "secundary": "#8e1313"
+        }
+    },
+
+    {
+        "name":"green",
+        "colors": {
+            "background": "#d4ffd7",
+            "background-secundary": "#9eef9e",
+            "primary": "#304c0b",
+            "secundary": "#588216"
+        }
+    },
+
+    {
+        "name":"purple",
+        "colors": {
+            "background": "#ebcfff",
+            "background-secundary": "#cda8f4",
+            "primary": "#540866",
+            "secundary": "#8720a0"
+        }
+    },
+
+    {
+        "name":"yellow",
+        "colors": {
+            "background": "#fffbcf",
+            "background-secundary": "#f7eaa1",
+            "primary": "#665808",
+            "secundary": "#aa921b"
+        }
+    },
+
+    {
+        "name":"blue",
+        "colors": {
+            "background": "#eefaff",
+            "background-secundary": "#c7edf9",
+            "primary": "#2584a5",
+            "secundary": "#2ba1c1"
+        }
+    },
+
+    {
+        "name":"pink",
+        "colors": {
+            "background": "#fcc7ff",
+            "background-secundary": "#fa99ff",
+            "primary": "#951a99",
+            "secundary": "#ad1ab5"
+        }
+    },
+
+    {
+        "name":"orange",
+        "colors": {
+            "background": "#ffddab",
+            "background-secundary": "#ffcd85",
+            "primary": "#7c5413",
+            "secundary": "#9b671b"
+        }
+    }
+]

@@ -43,7 +43,7 @@ export class SingleNoteComponent implements OnInit {
     }
     return listTagsNames
   }
-  getColor(){return this.note.color}
+  getColor(){return "red"}
   getPinned(){return this.note.pinned}
   getCreatedAt(){return this.note.createdAt}
 
