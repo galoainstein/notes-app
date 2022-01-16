@@ -89,6 +89,7 @@ input:focus, textarea:focus{
     border-radius: 10px;
     border: 2px solid var(--primary);
     shape-outside: circle();
+    background-color: transparent;
 
     
 }

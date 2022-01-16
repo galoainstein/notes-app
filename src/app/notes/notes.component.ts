@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from '../services/data.service';
 import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
@@ -10,9 +11,18 @@ import { LocalStorageService } from '../services/local-storage.service';
 export class NotesComponent implements OnInit {
 
   noteCollection?: any[];
+  //changeNotificator?:string;
 
-  constructor(public storage:LocalStorageService) { 
+  constructor(
+    public storage:LocalStorageService,
+    private data: DataService
+  ) { 
     window.addEventListener('storage', ()=>this.atualiza());
+    this.data.currentMessage.subscribe(changeNotificator => {
+      if (changeNotificator){
+        this.atualiza()
+      }
+    })
   }
 
 
@@ -22,11 +32,6 @@ export class NotesComponent implements OnInit {
 
   atualiza(){
     this.noteCollection = this.storage.get(this.storage.noteCollection);
-  }
-
-  clearNotes(){
-    this.storage.remove(this.storage.noteCollection)
-    this.atualiza()
   }
 
   receiveChange($event:any) {

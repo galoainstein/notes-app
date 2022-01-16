@@ -1,5 +1,6 @@
 import { LocalStorageService } from './../services/local-storage.service';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,13 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor(public storage:LocalStorageService) { }
+  constructor(
+    public storage:LocalStorageService,
+    private data: DataService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  updateNotes() {
+    this.data.changeMessage("true")
+  }
+
   limpa(){
     this.storage.remove(this.storage.noteCollection)
+    this.updateNotes()
     //this.atualiza()
   }
 

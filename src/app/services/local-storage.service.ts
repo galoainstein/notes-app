@@ -30,9 +30,11 @@ export class LocalStorageService {
   }
 
   remove(key: string): boolean {
-    if (this.storage) {
-      this.storage.removeItem(key);
-      return true;
+    if (confirm("Certeza que deseja apagar todas as notas? Esta ação não pode ser desfeita")){
+      if (this.storage) {
+        this.storage.removeItem(key);
+        return true;
+      }
     }
     return false;
   }

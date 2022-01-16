@@ -22,9 +22,12 @@ export class SingleNoteComponent implements OnInit {
     
   }
 
-  getID(){return this.note.id}
-  getTitle(){return this.note.title}
-  getDescription(){return this.note.description}
+  getStyleColors(){
+    Object.keys(this.note.themeColors).forEach(property => {
+      document.documentElement.style.setProperty(`--${property}`, this.note.themeColors[property]);
+    });
+  }
+
   getTasks(){
     var listTasksNames = []
     if (this.note.tasks){
@@ -34,6 +37,7 @@ export class SingleNoteComponent implements OnInit {
     }
     return listTasksNames
   }
+
   getTags(){
     var listTagsNames = []
     if (this.note.tags){
@@ -43,17 +47,14 @@ export class SingleNoteComponent implements OnInit {
     }
     return listTagsNames
   }
-  getColor(){return "red"}
-  getPinned(){return this.note.pinned}
-  getCreatedAt(){return this.note.createdAt}
 
-  getEditLink(){return `notes/edit/${this.getID()}`}
+  getEditLink(){return `notes/edit/${this.note.id}`}
 
   redirectToEdit(){window.location.pathname = this.getEditLink()}
 
   deleteNote(){
     let noteCollection = this.storage.get(this.storage.noteCollection)
-    delete noteCollection[this.getID()]
+    delete noteCollection[this.note.id]
     noteCollection = noteCollection.filter((note:any) => note!=null)
     this.resetIDValues(noteCollection)
     this.storage.set(this.storage.noteCollection,noteCollection)

@@ -1,11 +1,11 @@
-<button (click)="redirectToEdit()" class='note' [style.background-color]="getColor()">
+<button (click)="redirectToEdit()" class='note'>
 <div>
     
     <button (click)="deleteNote()">Deletar</button>
-    <h3>{{ getTitle() }}</h3>
-    <h5>{{ getCreatedAt() }}</h5>
-    <p>{{ getDescription() }}</p>
-    <p>Id: {{ getID() }}</p>
+    <h3>{{ note.title }}</h3>
+    <h5>{{ note.createdAt }}</h5>
+    <p>{{ note.description }}</p>
+    <p>Id: {{ note.id }}</p>
 
     <div [hidden]="getTasks().length==0">
         <h4>Tasks:</h4>

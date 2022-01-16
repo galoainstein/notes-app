@@ -1,5 +1,4 @@
-<button class="btn btn-primary" (click)="clearNotes()">Limpar Todas as notas</button>
+<!-- <app-side-bar hidden="true" (changeEvent)="receiveChange($event)"></app-side-bar> -->
 <div *ngFor="let note of noteCollection">
-    
     <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
 </div>

@@ -27,6 +27,12 @@ export abstract class BaseFormComponent {
       tasks: [[]],
       tags: [[]],
       color: ["white"],
+      themeColors: [{
+        "background": "#fff",
+        "background-secundary": "#efefef",
+        "primary": "#777777",
+        "secundary": "#b2b2b2"
+      }],
       pinned: [false],
       createdAt: [null]
     });
@@ -66,8 +72,6 @@ export abstract class BaseFormComponent {
       }
     })
   }
-
-  getThemeName(){return `theme-${this.getFormControlValue("color")}`}
 
   addToFormControlArray(formControl: string, inputID: string){
     this.inputArrayItem = document.getElementById(inputID)

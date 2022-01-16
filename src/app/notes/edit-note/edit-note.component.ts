@@ -48,6 +48,7 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
     colorThemes.forEach((element:any) => {
       if (element.name == this.getFormControlValue('color')){
         this.themeColor = element.colors
+        this.setFormControlValue("themeColors",this.themeColor)
       }
     });
     Object.keys(this.themeColor!).forEach(property => {
