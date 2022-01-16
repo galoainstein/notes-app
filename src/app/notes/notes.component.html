@@ -1,4 +1,10 @@
 <!-- <app-side-bar hidden="true" (changeEvent)="receiveChange($event)"></app-side-bar> -->
-<div *ngFor="let note of noteCollection">
+<h4 [hidden]="getPinned().length==0">PINNED</h4>
+<div class="notes-pinned" *ngFor="let note of getPinned()">
+    <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
+</div>
+
+<h4 [hidden]="getPinned(false).length==0">ALL NOTES</h4>
+<div class="notes-unpinned" *ngFor="let note of getPinned(false)">
     <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
 </div>

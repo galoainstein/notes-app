@@ -38,4 +38,14 @@ export class NotesComponent implements OnInit {
     this.atualiza()
   }
 
+  getPinned(bool = true){
+    let collection:any[] = []
+    this.noteCollection?.forEach((note:any) => {
+      if (note.pinned == bool){
+        collection.push(note)
+      }
+    })
+    return collection
+  }
+
 }

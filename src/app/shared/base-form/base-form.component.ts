@@ -73,6 +73,10 @@ export abstract class BaseFormComponent {
     })
   }
 
+  pin(){
+    this.setFormControlValue('pinned',!this.getFormControlValue('pinned'))
+  }
+
   addToFormControlArray(formControl: string, inputID: string){
     this.inputArrayItem = document.getElementById(inputID)
     const inputValue:string = this.inputArrayItem.value

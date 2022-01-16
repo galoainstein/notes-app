@@ -53,12 +53,14 @@ export class SingleNoteComponent implements OnInit {
   redirectToEdit(){window.location.pathname = this.getEditLink()}
 
   deleteNote(){
-    let noteCollection = this.storage.get(this.storage.noteCollection)
-    delete noteCollection[this.note.id]
-    noteCollection = noteCollection.filter((note:any) => note!=null)
-    this.resetIDValues(noteCollection)
-    this.storage.set(this.storage.noteCollection,noteCollection)
-    this.changeEvent.emit('true')
+    if (confirm('Certeza que deseja apagar esta nota? Esta ação não pode ser revertida!')){
+      let noteCollection = this.storage.get(this.storage.noteCollection)
+      delete noteCollection[this.note.id]
+      noteCollection = noteCollection.filter((note:any) => note!=null)
+      this.resetIDValues(noteCollection)
+      this.storage.set(this.storage.noteCollection,noteCollection)
+      this.changeEvent.emit('true')
+    }
   }
 
 
