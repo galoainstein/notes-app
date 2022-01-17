@@ -36,7 +36,6 @@ export abstract class BaseFormComponent {
       fav: [false],
       createdAt: [null]
     });
-    //this.formulario.reset();
   }
 
   isFieldBlank(fieldValue:any){
@@ -113,6 +112,12 @@ export abstract class BaseFormComponent {
     delete this.getFormControlValue(formControl)[id]
     this.setFormControlValue(formControl, this.getFormControlValue(formControl).filter((v:any) => v != null))
     this.resetIDValues(formControl)
+  }
+
+  deleteNote(){
+    if (this.storage.deleteNote(this.getFormControlValue('id'))){
+      window.location.pathname = '/notes';
+    }
   }
 
 }

@@ -47,4 +47,21 @@ export class LocalStorageService {
     return false;
   }
 
+  deleteNote(id:number): boolean{
+    if (confirm('Certeza que deseja apagar esta nota? Esta ação não pode ser revertida!')){
+      let noteCollection = this.get(this.noteCollection)
+      noteCollection.splice(id,1)
+      this.resetIDValues(noteCollection)
+      this.set(this.noteCollection,noteCollection)
+      return true
+    }
+    return false
+  }
+
+  resetIDValues(noteCollection:any){
+    for (let i=0; i<noteCollection.length; i++){
+      noteCollection[i]['id'] = i
+    }
+  }
+
 }

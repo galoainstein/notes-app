@@ -18,7 +18,8 @@ import colorThemes from 'src/app/shared/color-themes/color.themes.json'
 export class EditNoteComponent extends BaseFormComponent implements OnInit {
 
   inscricao?: Subscription;
-  themeColor? : { [key: string]: any }
+  themeColor?: { [key: string]: any }
+  hovered?: any
   
 
   constructor(private route: ActivatedRoute,) {
@@ -40,13 +41,36 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
       this.setFormByID(this.getFormControlValue('id'))
     }
 
-    this.setThemeColor()
+    this.setThemeColor(this.getFormControlValue('color'))
     
   }
 
-  setThemeColor(){
+  getColorNames(){
+    var array: {value:any, label:any, style:any, pressedStyle:any}[] = []
     colorThemes.forEach((element:any) => {
-      if (element.name == this.getFormControlValue('color')){
+      var name = element.name
+      var theme = element.colors
+      array.push({
+        value: name,
+        label: name[0].toUpperCase() + name.slice(1),
+        style: this.styleCSS(theme),
+        pressedStyle: this.styleCSS(theme,true)
+      })
+    })
+    return array
+  }
+
+  styleCSS(theme:{background:any, "background-secundary":any, primary:any, secundary:any}, pressed=false){
+    if (pressed){
+      return {"background": theme.primary, "color": theme.background}
+    }
+    return {"background": theme["background-secundary"], "color": theme.primary}
+  }
+
+  setThemeColor(color:string){
+    console.log(11111)
+    colorThemes.forEach((element:any) => {
+      if (element.name == color){
         this.themeColor = element.colors
         this.setFormControlValue("themeColors",this.themeColor)
       }
@@ -54,14 +78,11 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
     Object.keys(this.themeColor!).forEach(property => {
       document.documentElement.style.setProperty(`--${property}`, this.themeColor![property]);
     });
+    this.selectColor(false)
   }
 
   ngOnDestroy(){
     this.inscricao?.unsubscribe();
-  }
-
-  checkValidations(){
-    this.formulario.markAllAsTouched();
   }
 
   correctDateFormat(date:string){
@@ -93,5 +114,45 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
       window.location.pathname = '/notes';
     }
   }
+
+  selectColor(bool = true){
+    var ctr = 0;
+    var backdrop = document.getElementById("backdrop-color-darken")!
+    if (bool){
+      window.setTimeout(function(){
+        backdrop.style.display = 'block';
+        fadein();
+      },0)
+    } else {
+      fadeout();
+      window.setTimeout(function(){
+        backdrop.style.display = 'none';
+      },150)
+    }
+
+    function fadein(){
+      backdrop.style.opacity = ctr !== 10 ? '0.'+ctr : '1';
+      ctr++;
+      if (ctr < 11)
+        requestAnimationFrame(fadein);
+      else
+        ctr = 0;
+    }
+
+    function fadeout(){
+      backdrop.style.opacity = '' + (1 - parseFloat('0.'+ctr));
+      //backdrop.style.transform = 'scale('+(1 - ('0.'+ctr))+')';
+      ctr++;
+      
+      if (ctr < 10)
+        requestAnimationFrame(fadeout);
+      else
+        ctr = 0;
+    }
+    
+    return true
+  }
+
+  
 
 }

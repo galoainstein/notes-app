@@ -1,20 +1,20 @@
 <div class="tasks-input">
     <div class="tasks-undone task" *ngFor="let item of getTasks(false); let i = index">
-        <button (click)='switchStateTask(item.id)' class="checkbox"></button>
+        <button (click)='switchStateTask(item.id)' class="checkbox" type="button"></button>
         <input class="line-text display-task" [value]="item.name">
-        <button class="delete-task" (click)="deleteFromArray(item.id)">
+        <button class="delete-task" (click)="deleteFromArray(item.id)" type="button">
             <mat-icon class="delete-outline">delete_outline</mat-icon>
         </button>
     </div>
     <div class="tasks-done task" *ngFor="let item of getTasks(true); let i = index">
-        <button (click)='switchStateTask(item.id)' class="checkbox checked"></button>
+        <button (click)='switchStateTask(item.id)' class="checkbox checked" type="button"></button>
         <input class="line-text display-task done" [value]="item.name">
-        <button class="delete-task" (click)="deleteFromArray(item.id)">
+        <button class="delete-task" (click)="deleteFromArray(item.id)" type="button">
             <mat-icon class="delete-outline">delete_outline</mat-icon>
         </button>
     </div>
     <div class="task">
-        <input type="text" class="line-text display-task" id="input-task" placeholder="Nova Task">
+        <input type="text" class="line-text display-task" id="input-task" (keydown.enter)="addToArray()" placeholder="Nova Task">
         <button class="add-task" (click)="addToArray()">
             <mat-icon>add</mat-icon>
         </button>

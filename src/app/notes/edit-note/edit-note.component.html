@@ -10,8 +10,7 @@
         <app-input-tasks formControlName="tasks"
         [tasksArray]="getFormControlValue('tasks')"></app-input-tasks>
         
-
-        <div class="form-group">
+        <!-- <div class="form-group">
             <div class="col-sm-12 form-inline" [hidden]="getFormControlValue('tags').length==0"
             *ngFor="let item of getFormControlValue('tags'); let i = index">
                 <label class="form-control" readonly>{{ item.name }}</label>
@@ -22,29 +21,35 @@
                 <input type="text" class="form-control" id="input-tag">
                 <button class="btn btn-primary" (click)="addToFormControlArray('tags','input-tag')">Add</button>
             </div>
+        </div> -->
+
+        <button (click)="selectColor()" class="btn btn-color">
+            <mat-icon>fiber_smart_record</mat-icon>
+            <span class="select-color-text">Cor</span>
+        </button>
+        <div id="backdrop-color-darken">
+            <div class="color-popup">
+                <button class="btn btn-close" (click)="selectColor(false)"></button>
+                <ul *ngFor="let theme of getColorNames(); let i = index">
+                    <button class="btn btn-color selector"
+                    [ngStyle]="hovered === i ? theme.pressedStyle : theme.style"
+                    (click)="setThemeColor(theme.value)"> <!-- (mouseenter)="hovered = i" (mouseleave)="hovered = -1" -->
+                        <mat-icon class="icon-color-selector">fiber_smart_record</mat-icon>
+                        <span class="select-color-text">{{ theme.label }}</span>
+                    </button>
+                </ul>
+            </div>
         </div>
-
-        <label for="color">Choose a color theme:</label>
-        <select name="color" formControlName="color" id="color" (change)="setThemeColor()">
-            <option value="white">White</option>
-            <option value="blue">Blue</option>
-            <option value="red">Red</option>
-            <option value="yellow">Yellow</option>
-            <option value="pink">Pink</option>
-            <option value="orange">Orange</option>
-            <option value="purple">Purple</option>
-            <option value="green">Green</option>
-        </select>
-        <br>
-
+        
         <div class="btn-area">
             <div class="to-right">
-                <button (click)="fav()" class="btn btn-fav" id="btnteste">
+                <button (click)="deleteNote()" class="btn btn-delete"><mat-icon>delete</mat-icon></button>
+                <button (click)="fav()" class="btn btn-fav">
                     <mat-icon [hidden]="isFav()">star_border</mat-icon>
                     <mat-icon [hidden]="!isFav()">star</mat-icon>
                 </button>
                 <button type="submit" class="btn btn-primary" (click)='trySubmit()'>Salvar</button>
-                <button type="submit" class="btn btn-stay" (click)='trySubmit(false)'>Salvar e Continuar Editando</button>
+                <!-- <button type="submit" class="btn btn-stay" (click)='trySubmit(false)'>Salvar e Continuar Editando</button> -->
                 <button type="submit" class="btn btn-secundary" (click)='resetForm()'>Limpar</button>
                 <button type="submit" class="btn btn-secundary" routerLink="/notes">Cancelar</button>
             </div>

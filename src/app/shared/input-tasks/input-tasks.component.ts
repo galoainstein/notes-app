@@ -26,6 +26,13 @@ export class InputTasksComponent implements ControlValueAccessor {
 
   constructor() {}
 
+  // document.getElementById(this.inputID).onkeypress = function(e) {
+  //   if(e.keyCode == 13) {
+  //       alert('You pressed enter!');
+  //   }
+  //   return 'a'
+  // }
+
   isBlank(value:any){
     return value == null || value == "" || value == []
   }
