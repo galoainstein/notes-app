@@ -26,9 +26,7 @@ export class NotesComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    this.atualiza()
-  }
+  ngOnInit(): void {this.atualiza()}
 
   atualiza(){
     this.noteCollection = this.storage.get(this.storage.noteCollection);
@@ -46,16 +44,6 @@ export class NotesComponent implements OnInit {
       }
     })
     return collection
-  }
-
-  childThemes(id:number){
-    let css = `
-    --background: ${this.noteCollection![id]["themeColors"]["background"]};
-    --background-secundary: ${this.noteCollection![id]["themeColors"]["background-secundary"]};
-    --primary: ${this.noteCollection![id]["themeColors"]["primary"]};
-    --secundary: ${this.noteCollection![id]["themeColors"]["secundary"]}
-    `;
-    return css
   }
 
 }

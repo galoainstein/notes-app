@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
@@ -10,51 +11,56 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class SingleNoteComponent implements OnInit {
   
   @Input() note?:any;
-  @Input() styleTheme?:any;
-
-  //implement media src
-  //implement notificações e deadline
 
   @Output() changeEvent = new EventEmitter<string>();
-  
-  constructor(public storage:LocalStorageService) { }
-  
-  ngOnInit(): void {
-    //this.setStyleColors()
-  }
 
-  setStyleColors(){
-    Object.keys(this.note.themeColors).forEach(property => {
-      document.documentElement.style.setProperty(`--${property}`, this.note.themeColors[property]);
+  deleteBtn = document.getElementById("delete-btn")
+  onDeleteBtn = false
+  editBtn = document.getElementById("delete-btn")
+  
+  constructor(
+    public storage:LocalStorageService,
+    private readonly router: Router
+  ) {
+    this.deleteBtn?.addEventListener('mouseenter',()=>{
+      this.onDeleteBtn = true
+      console.log(this.onDeleteBtn)
+    })
+    this.deleteBtn?.addEventListener('mouseleave',()=>{
+      this.onDeleteBtn = false
+      console.log(this.onDeleteBtn)
+    })
+  }
+  
+  ngOnInit(): void {}
+
+  getStyleColors(){
+    let theme = this.note.themeColors
+    let css = ""
+    Object.keys(theme).forEach(property => {
+      css += `--${property}: ${theme[property]};`
     });
+    return css
   }
 
-  getTasks(){
+  getTasks(completed = false){
     var listTasksNames = []
     if (this.note.tasks){
       for (var i = 0; i<this.note.tasks.length; i++){
-        listTasksNames.push(this.note.tasks[i].name)
+        if (this.note.tasks[i].completed == completed){
+          listTasksNames.push(this.note.tasks[i].name)
+        }
+        
       }
     }
     return listTasksNames
   }
 
-  getTags(){
-    var listTagsNames = []
-    if (this.note.tags){
-      for (var i = 0; i<this.note.tags.length; i++){
-        listTagsNames.push(this.note.tags[i].name)
-      }
-    }
-    return listTagsNames
-  }
-
   getEditLink(){return `/notes/edit/${this.note.id}`}
 
   deleteNote(){
-    if (this.storage.deleteNote(this.note.id)){
-      this.changeEvent.emit('true')
-    }
+    this.storage.deleteNote(this.note.id)
+    this.changeEvent.emit('true')
   }
 
 }

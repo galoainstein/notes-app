@@ -68,7 +68,6 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
   }
 
   setThemeColor(color:string){
-    console.log(11111)
     colorThemes.forEach((element:any) => {
       if (element.name == color){
         this.themeColor = element.colors

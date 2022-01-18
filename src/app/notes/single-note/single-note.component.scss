@@ -1,19 +1,21 @@
 .note {
-    padding: 1.5em;
-    overflow: auto;
-    left: 0;
-    border-radius: 1em;
-    background-color: var(--background);
-    color: var(--primary);
-    margin: 1em;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border-radius: 15px;
     border: 0px;
-    transition: .5s;
-    
-}
 
-.note:hover{
-    background-color: var(--background-secundary);
-    color: var(--secundary)
+    background-color: var(--background);
+    color: var(--primary); 
+    transition: .5s;
+    overflow: hidden;
+    text-align: left;
+    vertical-align: top;
+
+    &:hover{
+        background-color: var(--background-secundary);
+        color: var(--secundary)
+    }
 }
 
 .delete-btn{
@@ -21,8 +23,33 @@
     color: var(--primary);
     border: 0px;
     transition: .5s;
+    float: right;
+    padding-right: 0;
+
+    &:hover{
+        color: var(--secundary);
+    }
 }
 
-.delete-btn:hover{
-    color: var(--secundary);
+.title{
+    font-size: 15pt;
+    font-weight: bold;
 }
+
+.created-at{
+    font-size: 10pt;
+
+}
+
+.task{
+    padding-left: 20px;
+    
+    &.uncompleted{
+        list-style-type: circle;
+    }
+    
+    &.completed{
+        text-decoration: line-through;
+    }
+}
+

@@ -1,23 +1,18 @@
-<button [routerLink]="getEditLink()" class='note' [style]="styleTheme">
-<div>
-    
+<button [routerLink]="getEditLink()" class='note' [style]="getStyleColors()">
     <button class="delete-btn" (click)="deleteNote()"><mat-icon>delete</mat-icon></button>
-    <h4>{{ note.title }}</h4>
-    <h5>{{ note.createdAt }}</h5>
+    <div class="title">{{ note.title }}</div>
+    <div class="created-at">{{ note.createdAt }}</div>
     <p>{{ note.description }}</p>
-    <p>Id: {{ note.id }}</p>
 
     <div [hidden]="getTasks().length==0">
-        <h4>Tasks:</h4>
-        <ul *ngFor="let task of getTasks()">
+        <ul *ngFor="let task of getTasks()" class="task uncompleted">
+            <li>{{ task }}</li>
+        </ul>
+    </div>
+    <div [hidden]="getTasks(true).length==0">
+        <ul *ngFor="let task of getTasks(true)" class="task completed">
             <li>{{ task }}</li>
         </ul>
     </div>
 
-    <div [hidden]="getTags().length==0">
-        <h4>Tags:</h4>
-        <ul *ngFor="let tag of getTags()">
-            <li>{{ tag }}</li>
-        </ul>
-    </div>
-</div></button>
+</button>

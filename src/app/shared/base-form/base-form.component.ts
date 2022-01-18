@@ -115,9 +115,8 @@ export abstract class BaseFormComponent {
   }
 
   deleteNote(){
-    if (this.storage.deleteNote(this.getFormControlValue('id'))){
-      window.location.pathname = '/notes';
-    }
+    this.storage.deleteNote(this.getFormControlValue('id'))
+    window.location.pathname = '/notes';
   }
 
 }

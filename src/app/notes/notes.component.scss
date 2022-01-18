@@ -2,13 +2,7 @@
 
 h3 {
     font-size: 13pt;
-    margin-left: 1em;
-    margin-bottom: 0;
-}
-
-app-single-note{
-    height: 40vh;
-    width: 40vh;
+    margin: 20px 0px 5px 15px
 }
 
 .all-notes{
@@ -16,13 +10,20 @@ app-single-note{
     margin: 45px 60px;
 
     padding: 0px;
-
     color: $primary-color-heavy;
 }
 
-.notes-fav, .notes-unfav{
-    display: inline-flex;
-    height: 265px;
+.wraper{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    &::after{
+        //height: 0;
+        width: 225px;
+        flex:auto;
+        content: "";
+    }
 }
 
 .new-note-btn{
@@ -32,11 +33,16 @@ app-single-note{
     border-radius: 15px;
     width: 100%;
     height: 50px;
-    margin: 0 1em 30px 1em;
+    margin-bottom: 30px ;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
     transition: .5s;
+
+    &:hover{
+        background-color: $quaternary-color-light;
+        color: $primary-color-heavy;
+    }
 }
 
 .new-note-txt{
@@ -48,7 +54,16 @@ app-single-note{
     margin-right: 16px;
 }
 
-.new-note-btn:hover{
-    background-color: $quaternary-color-light;
-    color: $primary-color-heavy
+
+.note{
+    height: 225px;
+    width: 225px;
+    margin: 8px 0;
 }
+
+.hidden {
+    visibility: hidden;
+    width: 225px;
+    height: 0;
+    margin: 0;
+  }
