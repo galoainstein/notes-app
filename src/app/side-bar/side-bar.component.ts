@@ -43,4 +43,8 @@ export class SideBarComponent implements OnInit {
   view(colorName: string){
     this.router.navigate(['/notes/color/'+colorName])
   }
+
+  getNoteCollection(){
+    return this.storage.get(this.storage.noteCollection)
+  }
 }

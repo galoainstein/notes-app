@@ -9,16 +9,27 @@ export class ColorService {
 
   constructor() { }
 
-  getNames(){
+  getNames(onlyUsed = false, noteCollection: any[] = []){
+    var used: any[] = []
+    if (onlyUsed){
+      noteCollection.forEach((note:any) => {
+        var color = note.color
+        if (!used.includes(color)){
+          used.push(color)
+        }
+      })
+    }
     var array: {value:any, label:any, style:any}[] = []
     colorThemes.forEach((element:any) => {
       var name = element.name
       var theme = element.colors
-      array.push({
-        value: name,
-        label: name[0].toUpperCase() + name.slice(1),
-        style: {"background": theme["background-secundary"], "color": theme.primary}
-      })
+      if (!onlyUsed || used.includes(name)){
+        array.push({
+          value: name,
+          label: name[0].toUpperCase() + name.slice(1),
+          style: {"background": theme["background-secundary"], "color": theme.primary}
+        })
+      }
     })
     return array
   }
