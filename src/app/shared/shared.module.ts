@@ -4,17 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 
-import { InputFieldComponent } from './input-field/input-field.component';
-import { ErrorMsgComponent } from './error-msg/error-msg.component';
 import { InputTasksComponent } from './input-tasks/input-tasks.component';
-import { InputTagsComponent } from './input-tags/input-tags.component';
 
 @NgModule({
   declarations: [
-    InputFieldComponent,
-    ErrorMsgComponent,
-    InputTasksComponent,
-    InputTagsComponent
+    InputTasksComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +18,6 @@ import { InputTagsComponent } from './input-tags/input-tags.component';
     MatIconModule
   ],
   exports: [
-    InputFieldComponent,
     InputTasksComponent
   ],
 })

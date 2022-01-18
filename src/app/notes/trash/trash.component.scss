@@ -1,0 +1,66 @@
+@import "../../shared/scss-files/variables.scss";
+
+h3 {
+    font-size: 13pt;
+    margin: 20px 0px 12px 15px
+}
+
+.all-notes{
+    border-radius: 15px;
+    margin: 45px 60px;
+
+    padding: 0px;
+    color: $primary-color-heavy;
+}
+
+
+
+.note{
+    border: 0;
+    border-radius: 8px;
+    font-weight: bold;
+
+    &.wrapper{
+        width: 100%;
+        height: 50px;
+        padding: 12px 18px;
+        margin: 5px 0;
+    
+    
+        display: flex;
+        justify-content: space-between;
+        vertical-align: middle;
+        background-color: $primary-color-light;
+        color: $primary-color-heavy;
+    
+        .title{
+            font-size: 12pt;
+            
+        }
+    }
+
+    &.restore{
+        background-color: transparent;
+        transition: .5s;
+
+        &:hover{
+            color: $secundary-color-heavy
+        }
+    }
+}
+
+.delete-all{
+    margin: 30px 0;
+    height: 40px;
+    border: 0;
+    background-color: $primary-color-heavy;
+    color: $primary-color-light;
+    border-radius: 8px;
+    padding: 0 15px;
+    transition: .5s;
+
+    &:hover{
+        background-color: $quaternary-color-light;
+        color: $primary-color-heavy
+    }
+}

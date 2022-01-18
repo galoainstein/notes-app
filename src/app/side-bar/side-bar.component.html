@@ -1,6 +1,10 @@
 <div class="side-bar">
-    <button routerLink="/notes" class="home-btn" [ngClass]="isSelected()">
+    <button routerLink="/notes" class="butn btn-home" [ngClass]="isSelected()">
         <h4>All Notes</h4>
+    </button>
+
+    <button routerLink="/notes/trash" class="butn btn-trash" [ngClass]="isSelected('/notes/trash')">
+        <h4>Trash</h4>
     </button>
 
     <div class="tags">

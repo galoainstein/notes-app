@@ -1,0 +1,14 @@
+<div class="all-notes">
+    <div [hidden]="getNotes().length==0">
+        <h3>ÚLTIMAS {{ trashCapacity }} NOTAS DELETADAS</h3>
+        <div *ngFor="let note of getNotes(); let i = index">
+            <div class="note wrapper">
+                <span [hidden]="!note.title" class="title">{{ note.title }}</span>
+                <span [hidden]="note.title" class="title">SEM TÍTULO</span>
+                <button class="note restore" (click)="restore(note, i)"><mat-icon>exit_to_app</mat-icon></button>
+            </div>
+        </div>
+        <button class="delete-all" (click)="cleanTrash()">Esvaziar lixeira</button>
+    </div>
+    <h3 [hidden]="getNotes().length>0">LIXEIRA VAZIA</h3>
+</div>

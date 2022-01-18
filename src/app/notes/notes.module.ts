@@ -12,6 +12,7 @@ import { NotesRoutingModule } from './notes-routing.module';
 import { NotesComponent } from './notes.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { SingleNoteComponent } from './single-note/single-note.component';
+import { TrashComponent } from './trash/trash.component';
 
 registerLocaleData(localeBr, 'pt')
 
@@ -20,6 +21,7 @@ registerLocaleData(localeBr, 'pt')
     NotesComponent,
     EditNoteComponent,
     SingleNoteComponent,
+    TrashComponent,
   ],
   imports: [
     CommonModule,
@@ -30,10 +32,6 @@ registerLocaleData(localeBr, 'pt')
     SharedModule,
     NotesRoutingModule,
     MatIconModule
-  ],
-  exports:[
-    NotesComponent,
-    EditNoteComponent
   ],
   providers:[
     { provide: LOCALE_ID, useValue: 'pt' },

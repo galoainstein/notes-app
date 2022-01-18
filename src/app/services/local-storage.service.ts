@@ -9,7 +9,7 @@ export class LocalStorageService {
   public storage: Storage
   public noteCollection = 'noteCollection'
   public trashCollection = 'trashCollection'
-  private trashCapacity = 10
+  public trashCapacity = 10
   
   constructor() {
     this.storage = window.localStorage;
@@ -31,7 +31,7 @@ export class LocalStorageService {
   }
   
   remove(key: string): boolean {
-    if (confirm("Certeza que deseja apagar todas as notas? Esta ação não pode ser desfeita")){
+    if (confirm(`Certeza que deseja apagar todas as notas? Somente as últimas ${this.trashCapacity} ficarão salvas`)){
       if (this.storage) {
         this.storage.removeItem(key);
         return true;
@@ -62,7 +62,7 @@ export class LocalStorageService {
     if (!trashCollection){
       trashCollection = []
     }
-    trashCollection = trashCollection.concat(noteCollection).slice(0,this.trashCapacity)
+    trashCollection = trashCollection.concat(noteCollection).slice(-this.trashCapacity)
     this.set(this.trashCollection,trashCollection)
   }
   
