@@ -27,7 +27,7 @@ export class NotesComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {this.atualiza();console.log(this.noteCollection)}
+  ngOnInit(): void {this.atualiza()}
 
   atualiza(){
     this.noteCollection = this.storage.get(this.storage.noteCollection);

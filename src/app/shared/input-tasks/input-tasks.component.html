@@ -1,14 +1,14 @@
 <div class="tasks-input">
-    <div class="tasks-undone task" *ngFor="let item of getTasks(false); let i = index">
+    <div class="tasks-undone task" *ngFor="let item of getTasks(false)">
         <button (click)='switchStateTask(item.id)' class="checkbox" type="button"></button>
-        <input class="line-text display-task" [value]="item.name">
+        <input class="line-text display-task" [value]="item.name" readonly>
         <button class="delete-task" (click)="deleteFromArray(item.id)" type="button">
             <mat-icon class="delete-outline">delete_outline</mat-icon>
         </button>
     </div>
-    <div class="tasks-done task" *ngFor="let item of getTasks(true); let i = index">
+    <div class="tasks-done task" *ngFor="let item of getTasks(true)">
         <button (click)='switchStateTask(item.id)' class="checkbox checked" type="button"></button>
-        <input class="line-text display-task done" [value]="item.name">
+        <input class="line-text display-task done" [value]="item.name" readonly>
         <button class="delete-task" (click)="deleteFromArray(item.id)" type="button">
             <mat-icon class="delete-outline">delete_outline</mat-icon>
         </button>

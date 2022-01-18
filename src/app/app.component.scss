@@ -9,6 +9,8 @@ mat-toolbar {
 
 .side-bar-button{
     background-color: transparent;
+    border: 0;
+    margin-top: 6px;
 }
 
 mat-sidenav {
@@ -53,4 +55,5 @@ mat-divider {
     content:url("./img/notes-app-logo.png");
     height: 18px;
     margin-left: 10px;
+    cursor: pointer;
  }

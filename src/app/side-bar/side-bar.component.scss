@@ -7,21 +7,6 @@ h4{
     color: $primary-color-heavy;
 }
 
-.colors{
-    display: flex;
-    flex-direction: column;
-}
-
-.color-title{
-    align-self: flex-start;
-    margin-left: 50px;
-    margin-top: 20px;
-
-    font-size: 11pt;
-    font-weight: 500;
-    color: $primary-color-heavy;
-}
-
 .butn{
     margin-top: 12px;
     width: 100%;
@@ -99,7 +84,7 @@ h4{
     &.selector{
         font-size: 10pt;
         height: 30px;
-        width: 180px;
+        width: 210px;
         padding: 5px 8px;
         border-radius: 4px;
 
@@ -114,4 +99,18 @@ h4{
         }
         
     }
+}
+
+.colors{
+    display: flex;
+    flex-direction: column;
+}
+
+.color-title{
+    align-self: flex-start;
+    margin: 20px 0 10px 35px;
+
+    font-size: 11pt;
+    font-weight: 500;
+    color: $primary-color-heavy;
 }

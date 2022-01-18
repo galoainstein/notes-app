@@ -24,14 +24,14 @@ export class InputTasksComponent implements ControlValueAccessor {
   inputID = "input-task";
   inputArrayItem?: any;
 
-  constructor() {}
+  constructor() {
 
-  // document.getElementById(this.inputID).onkeypress = function(e) {
-  //   if(e.keyCode == 13) {
-  //       alert('You pressed enter!');
-  //   }
-  //   return 'a'
-  // }
+    document.getElementById("input-undone")?.addEventListener("click", ()=>{
+      console.log(111)
+      console.log(this.value)
+    })
+
+  }
 
   isBlank(value:any){
     return value == null || value == "" || value == []
@@ -69,6 +69,13 @@ export class InputTasksComponent implements ControlValueAccessor {
   
   switchStateTask(id:number) {
     this.tasksArray[id].completed = !this.tasksArray[id].completed
+  }
+
+  update(id: number, inputName: string){
+    console.log('change recognized')
+    let input = document.getElementById(inputName)!
+    console.log(input)
+    //this.tasksArray[id].value = input.value
   }
 
   private innerValue: any;
