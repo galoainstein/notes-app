@@ -4,7 +4,7 @@ This project was generated with [Angular CLI] version 13.1.2. The objective was 
 
 ## Execute
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. The project has also been uploaded to Vercel, access in <https://notes-app-jet.vercel.app/notes> with no need to install or download anything.
+Run `npm install` to install all packages and `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. The project has also been uploaded to Vercel, access in <https://notes-app-jet.vercel.app/notes> with no need to install or download anything.
 
 ## Functions
 
