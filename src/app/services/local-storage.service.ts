@@ -33,6 +33,7 @@ export class LocalStorageService {
   remove(key: string): boolean {
     if (confirm(`Certeza que deseja apagar todas as notas? Somente as últimas ${this.trashCapacity} ficarão salvas`)){
       if (this.storage) {
+        this.sendToTrash(this.get(this.noteCollection))
         this.storage.removeItem(key);
         return true;
       }

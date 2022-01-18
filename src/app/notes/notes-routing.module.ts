@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { NotesComponent } from './notes.component';
 import { TrashComponent } from './trash/trash.component';
+import { ViewColorComponent } from './view-color/view-color.component';
 
 const notesRoutes: Routes = [
     //{ path: '', component: CursosComponent },
     { path: '', component: NotesComponent },
     { path: 'trash', component: TrashComponent },
     { path: 'edit/:id', component: EditNoteComponent },
+    { path: 'color/:color', component: ViewColorComponent },
     //{ path: ':id', component: CursoDetalheComponent }
 ];
 

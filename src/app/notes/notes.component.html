@@ -4,9 +4,9 @@
         <mat-icon class="add-icon">add</mat-icon>
     </button>
 
-    <h3 [hidden]="getFavs().length==0">FAVORITES</h3>
+    <h3 [hidden]="getFavs(filter).length==0">FAVORITES</h3>
     <div class="wraper">
-        <div class="note" *ngFor="let note of getFavs()">
+        <div class="note" *ngFor="let note of getFavs(filter)">
             <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
         </div>
         <div class="note hidden"></div>
@@ -15,9 +15,9 @@
         <div class="note hidden"></div>
     </div>
 
-    <h3 [hidden]="getFavs(false).length==0">ALL NOTES</h3>
+    <h3 [hidden]="getFavs(filter, false).length==0">ALL NOTES</h3>
     <div class="wraper">
-        <div class="note" *ngFor="let note of getFavs(false)">
+        <div class="note" *ngFor="let note of getFavs(filter, false)">
             <app-single-note [note]="note" (changeEvent)="receiveChange($event)"></app-single-note>
         </div>
         <div class="note hidden"></div>

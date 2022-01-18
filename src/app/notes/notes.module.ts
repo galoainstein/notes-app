@@ -13,6 +13,7 @@ import { NotesComponent } from './notes.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { SingleNoteComponent } from './single-note/single-note.component';
 import { TrashComponent } from './trash/trash.component';
+import { ViewColorComponent } from './view-color/view-color.component';
 
 registerLocaleData(localeBr, 'pt')
 
@@ -22,6 +23,7 @@ registerLocaleData(localeBr, 'pt')
     EditNoteComponent,
     SingleNoteComponent,
     TrashComponent,
+    ViewColorComponent,
   ],
   imports: [
     CommonModule,

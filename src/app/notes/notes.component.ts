@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 import { LocalStorageService } from '../services/local-storage.service';
@@ -10,8 +10,9 @@ import { LocalStorageService } from '../services/local-storage.service';
 })
 export class NotesComponent implements OnInit {
 
+  @Input() filter = [false, ""]
+
   noteCollection?: any[];
-  //changeNotificator?:string;
 
   constructor(
     public storage:LocalStorageService,
@@ -26,7 +27,7 @@ export class NotesComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {this.atualiza()}
+  ngOnInit(): void {this.atualiza();console.log(this.noteCollection)}
 
   atualiza(){
     this.noteCollection = this.storage.get(this.storage.noteCollection);
@@ -36,11 +37,17 @@ export class NotesComponent implements OnInit {
     this.atualiza()
   }
 
-  getFavs(bool = true){
+  getFavs(filter: any[], bool = true){
     let collection:any[] = []
     this.noteCollection?.forEach((note:any) => {
       if (note.fav == bool){
-        collection.push(note)
+        if (filter[0]){
+          if(note.color == filter[1]){
+            collection.push(note)
+          }
+        } else {
+          collection.push(note)
+        }
       }
     })
     return collection

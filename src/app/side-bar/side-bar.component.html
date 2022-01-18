@@ -7,9 +7,15 @@
         <h4>Trash</h4>
     </button>
 
-    <div class="tags">
-        <span class="tag-title">TAGS</span>
-        <!--IMPLEMENT TAGS-->
+    <div class="colors">
+        <span class="color-title">Color Filter</span>
+        <div class="color-wrapper" *ngFor="let theme of getColorNames(); let i = index">
+            <button class="btn-color selector" [ngStyle]="theme.style"
+            (click)="view(theme.value)"> <!-- (mouseenter)="hovered = i" (mouseleave)="hovered = -1" -->
+                <mat-icon class="icon-color-selector">fiber_smart_record</mat-icon>
+                <span class="select-color-text">{{ theme.label }}</span>
+            </button>
+        </div>
     </div>
 
     <button class="delete-all-btn" (click)="limpa()">

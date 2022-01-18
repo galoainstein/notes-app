@@ -1,17 +1,4 @@
-@use "sass:string";
 @import "../../shared/scss-files/variables.scss";
-
-ul {
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    margin:16px
-};
-
-form{
-    //--theme1: green;
-    background-color: var(--background);
-}
 
 .note-editor{
     border-radius: 15px;
@@ -21,6 +8,10 @@ form{
     
     background-color: var(--background);
     color: rgb(41, 41, 41);
+
+    form{
+        background-color: var(--background);
+    }
 }
 
 .input-form{
@@ -33,7 +24,19 @@ form{
     border: 0px;
     
     
-    font-family: $font-primary;   
+    font-family: $font-primary;
+
+    &#title{
+        height: 50px;
+        font-size: 15pt;
+        border-bottom: 3px solid var(--primary);
+        border-radius: 8px
+    }
+
+    &.area-text{
+        height: 135px;
+        border-radius: 8px;
+    }
 }
 
 input:focus, textarea:focus{
@@ -43,24 +46,6 @@ input:focus, textarea:focus{
 ::placeholder{
     color: var(--secundary)
 }
-
-#title{
-    height: 50px;
-    font-size: 15pt;
-    border-bottom: 3px solid var(--primary);
-    border-radius: 8px
-}
-
-.line-text{
-    height: 45px;
-}
-
-.area-text{
-    height: 135px;
-    border-radius: 8px;
-}
-
-
 
 .btn-area{
     display:-webkit-flex;
@@ -78,39 +63,48 @@ input:focus, textarea:focus{
     font-size: auto;
     height: 6vh;
     transition: .5s;
-}
 
-.btn:focus{
-    box-shadow: none;
-}
+    &:focus{
+        box-shadow: none;
+    }
 
-.btn:hover{
-    background-color: var(--secundary);
-    color: var(--background);
+    &:hover{
+        background-color: var(--secundary);
+        color: var(--background);
+    }
 }
 
 .btn-primary, .btn-stay{
     background-color: $primary-color;
     color: $primary-color-light;
-}
 
-.btn-primary:hover, .btn-stay:hover{
-    background-color: $secundary-color;
-    color: $primary-color-heavy;
+    &:hover{
+        background-color: $secundary-color;
+        color: $primary-color-heavy;
+    }
 }
 
 .btn-color{
     margin-left: 0;
     display: inline-flex;
-}
 
-.btn-color.selector{
-    margin:0;
-    font-size: 10pt;
-    height: 30px;
-    width: 150px;
-    padding: 6px 8px;
-    border-radius: 4px;
+    &.selector{
+        margin:0;
+        font-size: 10pt;
+        height: 30px;
+        width: 150px;
+        padding: 6px 8px;
+        border-radius: 4px;
+
+        .icon-color-selector{
+            font-size: 15pt;
+        }
+
+        .select-color-text{
+            margin-left: 8px;
+        }
+        
+    }
 }
 
 .btn-close{
@@ -120,42 +114,40 @@ input:focus, textarea:focus{
     position: relative;
     float: right;
     height: 16px;
+
+    &:hover{
+        background-color: transparent;
+    }
 }
 
-.btn-close:hover{
-    background-color: transparent;
-}
-
-.icon-color-selector{
-    font-size: 15pt;
-}
 
 #backdrop-color-darken{
     display: none;
     width: 100%;
-    height: 103vh;//calc(100vw + 85px);
-    position: absolute;
+    height: 100vh;
+    position: fixed;
     left: 0;
-    top: 0;
+    top: 60px;
     background-color: rgba(0,0,0,.5);
     transition: .3;
-}
 
-.color-popup{
+    .color-popup{
+        position: fixed; 
+        width: 300px;
+        top: 20%;
+        left: calc(50% - 100px);
+        padding: 25px 25px;
+        border-radius: 15px;
     
-    position: fixed; /* or absolute */
-    width: 300px;
-    top: 15%;
-    left: calc(50% - 100px);
-    padding: 25px 25px;
-    border-radius: 15px;
-
-    background-color: var(--background);
-    color: var(--primary);
-    
+        background-color: var(--background);
+        color: var(--primary);
+        
+        .color-wrapper {
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            margin:16px
+        };
+    }
 }
 
-.select-color-text{
-    margin-left: 8px;
-    //margin-bottom: 15px;
-}

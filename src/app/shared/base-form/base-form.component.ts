@@ -114,9 +114,4 @@ export abstract class BaseFormComponent {
     this.resetIDValues(formControl)
   }
 
-  deleteNote(){
-    this.storage.deleteNote(this.getFormControlValue('id'))
-    window.location.pathname = '/notes';
-  }
-
 }
