@@ -1,27 +1,41 @@
 # NotesApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+This project was generated with [Angular CLI] version 13.1.2. The objective was to build a notes app, described in <https://github.com/florinpop17/app-ideas/blob/master/Projects/1-Beginner/Notes-App.md>.
 
-## Development server
+## Execute
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. The project has also been uploaded to Vercel, access in <https://notes-app-jet.vercel.app/notes> with no need to install or download anything.
 
-## Code scaffolding
+## Functions
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+User can create a note, edit a note and delete a note. Notes are created in an HTML form and permit the user to fill the following fields:
 
-## Build
+- Title
+- Description
+- To-do tasks
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> User can add a task, delete a task, and set a task as done or undone.
 
-## Running unit tests
+- Color 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> User can choose a color among 8 logged colors and, by doing so, set the color theme of the note, which will be used to display both in the edit page of self and in the display within all the notes. The color also works as a filter, allowing the user to see all the notes with the same color at once.
 
-## Running end-to-end tests
+- Favorite
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+> User can set a note to favorite, making it appear first in the notes display.
 
-## Further help
+The form also saves and displays the date and time the user created the note, this attribute can not be changed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Storage
+
+All notes created are saved in local storage, hence the user can reload the page or even close it and the notes will remain in the device. The last 10 deleted notes are stored in the trash bin, accessible on the app. User can restore a note from the trash bin and user can empty the trash bin.
+
+## Self critics
+
+> The quoted challenge from which this project derives had, among other things, a bonus feature that was not integrated:
+>
+> - User can create and edit a note in Markdown format. On save it will convert Markdown to HTML
+>
+> The non-completion of the above was a choice, given that, in my opinion, would give liberty to the user at an unwanted point, allowing very different note styles and displays, which could implicate an unorganized notes display, as well as an ill-favored design. In addition, could harm functions that I find convenient, such as color choosing or to-do task list.
+
+> In the making of the project, the same was committed to this repository, but no branch was created. As my git knowledge is very shallow, I focused on the programming and practical part of the code, especially given that this is my first project in Angular and even JS-HTML-CSS. In contrast, I acknowledge the importance of branching and admit it's an area I am yet to improve.

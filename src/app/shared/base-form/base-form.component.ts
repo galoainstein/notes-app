@@ -25,7 +25,6 @@ export abstract class BaseFormComponent {
       title: [null],
       description: [null],
       tasks: [[]],
-      tags: [[]],
       color: ["white"],
       themeColors: [{
         "background": "#fff",
@@ -76,42 +75,8 @@ export abstract class BaseFormComponent {
 
   isFav(){return this.getFormControlValue('fav')}
 
-  addToFormControlArray(formControl: string, inputID: string){
-    this.inputArrayItem = document.getElementById(inputID)
-    const inputValue:string = this.inputArrayItem.value
-    if (!this.isFieldBlank(inputValue)){
-      var object = {}
-      if (formControl == 'tasks'){
-        object = {
-          id: this.getFormControlValue(formControl).length,
-          name: inputValue,
-          completed: false
-        }
-      } else {
-        object = {
-          id: this.getFormControlValue(formControl).length,
-          name: inputValue,
-        }
-      }
-      this.getFormControlValue(formControl).push(object)
-      this.inputArrayItem.value = ''
-    }
-  }
-
   getFormControlValue(formControl:string) {return this.formulario.controls[formControl].value}
 
   setFormControlValue(formControl:string, value:any) {this.formulario.controls[formControl].setValue(value)}
-
-  resetIDValues(formControl:string){
-    this.getFormControlValue(formControl).forEach((element:any, index:number) => {
-      element.id = index
-    });
-  }
-
-  deleteFromFormControlArray(formControl: string, id: number) {
-    delete this.getFormControlValue(formControl)[id]
-    this.setFormControlValue(formControl, this.getFormControlValue(formControl).filter((v:any) => v != null))
-    this.resetIDValues(formControl)
-  }
 
 }

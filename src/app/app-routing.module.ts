@@ -6,12 +6,8 @@ import { NotesModule } from './notes/notes.module';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-    { path: 'notes',
-      loadChildren: () => NotesModule
-    },
-    //{ path: 'home', component: AppComponent},
+    { path: 'notes', loadChildren: () => NotesModule },
     { path: '**', redirectTo: '/notes', pathMatch: 'full' },
-    //{ path: '**', component: PaginaNaoEncontradaComponent }
 ];
 
 @NgModule({
