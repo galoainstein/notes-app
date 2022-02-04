@@ -72,51 +72,53 @@ input:focus, textarea:focus{
         background-color: var(--secundary);
         color: var(--background);
     }
-}
 
-.btn-primary, .btn-stay{
-    background-color: $primary-color;
-    color: $primary-color-light;
-
-    &:hover{
-        background-color: $secundary-color;
-        color: $primary-color-heavy;
-    }
-}
-
-.btn-color{
-    margin-left: 0;
-    display: inline-flex;
-
-    &.selector{
-        margin:0;
-        font-size: 10pt;
-        height: 30px;
-        width: 150px;
-        padding: 6px 8px;
-        border-radius: 4px;
-
-        .icon-color-selector{
-            font-size: 15pt;
+    &.btn-primary{
+        background-color: $primary-color;
+        color: $primary-color-light;
+    
+        &:hover{
+            background-color: $secundary-color;
+            color: $primary-color-heavy;
         }
-
-        .select-color-text{
-            margin-left: 8px;
-        }
-        
     }
-}
-
-.btn-close{
-    background-color: transparent;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    float: right;
-    height: 16px;
-
-    &:hover{
+    
+    &.btn-color{
+        //color: var(--primary);
+    
+        margin-left: 0;
+        display: inline-flex;
+    
+        &.selector{
+            margin:0;
+            font-size: 10pt;
+            height: 30px;
+            width: 150px;
+            padding: 6px 8px;
+            border-radius: 4px;
+    
+            .icon-color-selector{
+                font-size: 15pt;
+            }
+    
+            .select-color-text{
+                margin-left: 8px;
+            }
+            
+        }
+    }
+    
+    &.btn-close{
         background-color: transparent;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        float: right;
+        height: 16px;
+    
+        &:hover{
+            background-color: transparent;
+        }
     }
 }
 

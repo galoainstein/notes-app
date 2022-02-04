@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ColorService } from 'src/app/services/color.service';
 
 @Component({
   selector: 'app-single-note',
@@ -14,34 +15,16 @@ export class SingleNoteComponent implements OnInit {
 
   @Output() changeEvent = new EventEmitter<string>();
 
-  deleteBtn = document.getElementById("delete-btn")
   onDeleteBtn = false
-  editBtn = document.getElementById("delete-btn")
+  getStyleColors = this.color.getStyleColors
   
   constructor(
     public storage:LocalStorageService,
+    private color: ColorService,
     private readonly router: Router
-  ) {
-    this.deleteBtn?.addEventListener('mouseenter',()=>{
-      this.onDeleteBtn = true
-      console.log(this.onDeleteBtn)
-    })
-    this.deleteBtn?.addEventListener('mouseleave',()=>{
-      this.onDeleteBtn = false
-      console.log(this.onDeleteBtn)
-    })
-  }
+  ) { }
   
   ngOnInit(): void {}
-
-  getStyleColors(){
-    let theme = this.note.themeColors
-    let css = ""
-    Object.keys(theme).forEach(property => {
-      css += `--${property}: ${theme[property]};`
-    });
-    return css
-  }
 
   getTasks(completed = false){
     var listTasksNames = []

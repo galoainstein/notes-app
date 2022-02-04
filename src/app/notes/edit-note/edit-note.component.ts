@@ -94,6 +94,7 @@ export class EditNoteComponent extends BaseFormComponent implements OnInit {
   // Color Functions
 
     getColorNames = this.color.getNames
+    getStyleColors = this.color.getStyleColors
 
     setThemeColor(color:string){
       this.color.getThemes().forEach((element:any) => {

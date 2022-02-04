@@ -10,15 +10,15 @@
     <div class="colors" [hidden]="getColorNames(true, getNoteCollection()).length == 0">
         <span class="color-title">Color Filter</span>
         <div class="color-wrapper" *ngFor="let theme of getColorNames(true, getNoteCollection()); let i = index">
-            <button class="btn-color selector" [ngStyle]="theme.style"
-            (click)="view(theme.value)"> <!-- (mouseenter)="hovered = i" (mouseleave)="hovered = -1" -->
+            <button class="btn-color selector"
+            (click)="view(theme.value)" [style]="getStyleColors(theme.style)"> 
                 <mat-icon class="icon-color-selector">fiber_smart_record</mat-icon>
                 <span class="select-color-text">{{ theme.label }}</span>
             </button>
         </div>
     </div>
 
-    <button class="delete-all-btn" (click)="limpa()">
-        <mat-icon class="delete-icon">delete</mat-icon><span class="delete-all-txt">Delete ALL Notes</span>
+    <button id="delete-all-btn">
+        <mat-icon id="delete-icon">delete</mat-icon><span id="delete-all-txt">Delete ALL Notes</span>
     </button>
 </div>

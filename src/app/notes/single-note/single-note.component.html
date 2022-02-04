@@ -1,4 +1,4 @@
-<button [routerLink]="getEditLink()" class='note' [style]="getStyleColors()">
+<button [routerLink]="getEditLink()" class='note' [style]="getStyleColors(note.themeColors)">
     <div class="note-content">
         <button class="delete-btn" (click)="deleteNote()"><mat-icon>delete</mat-icon></button>
         <div class="title">{{ note.title }}</div>

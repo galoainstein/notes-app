@@ -27,7 +27,12 @@ export class ColorService {
         array.push({
           value: name,
           label: name[0].toUpperCase() + name.slice(1),
-          style: {"background": theme["background-secundary"], "color": theme.primary}
+          style: {
+            "background": theme.background,
+            "background-secundary": theme["background-secundary"],
+            "primary": theme.primary,
+            "secundary": theme.secundary
+          }
         })
       }
     })
@@ -35,4 +40,12 @@ export class ColorService {
   }
 
   getThemes(){return colorThemes}
+
+  getStyleColors(theme: any){
+    let css = ""
+    Object.keys(theme).forEach(property => {
+      css += `--${property}: ${theme[property]};`
+    });
+    return css
+  }
 }

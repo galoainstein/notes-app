@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { fromEvent } from 'rxjs';
 
 import { LocalStorageService } from './../services/local-storage.service';
 import { DataService } from '../services/data.service';
@@ -13,6 +14,8 @@ import { ColorService } from '../services/color.service';
 export class SideBarComponent implements OnInit {
 
   getColorNames = this.color.getNames
+  getStyleColors = this.color.getStyleColors
+  
 
   constructor(
     public storage:LocalStorageService,
@@ -22,6 +25,8 @@ export class SideBarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const deleteBtn: any = document.querySelector('#delete-all-btn')
+    fromEvent(deleteBtn, 'click').subscribe(() =>  this.limpa());
   }
 
   updateNotes() {

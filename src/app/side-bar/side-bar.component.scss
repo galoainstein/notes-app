@@ -43,7 +43,7 @@ h4{
     }
 }
 
-.delete-all-btn{
+#delete-all-btn{
     background-color: $tertiary-color-light;
     color: $primary-color-heavy;
     width: 210px;
@@ -59,12 +59,12 @@ h4{
     justify-content: space-between;
     transition: .5s;
 
-    .delete-all-txt{
+    #delete-all-txt{
         font-weight: 500;
         margin-right: 22px;
     }
 
-    .delete-icon{
+    #delete-icon{
         margin: 0px 8px;
         //margin-top: 7px;
     }
@@ -76,10 +76,18 @@ h4{
 }
 
 .btn-color{
+    background-color: var(--background-secundary);
+    color: var(--primary);
+
     margin: 3px;
     border: 0;
     transition: .5s;
     display: inline-flex;
+
+    &:hover{
+        background-color: var(--secundary);
+        color: var(--background);
+    }
 
     &.selector{
         font-size: 10pt;
@@ -87,8 +95,6 @@ h4{
         width: 210px;
         padding: 5px 8px;
         border-radius: 4px;
-
-        background-color: transparent;
 
         .icon-color-selector{
             font-size: 15pt;

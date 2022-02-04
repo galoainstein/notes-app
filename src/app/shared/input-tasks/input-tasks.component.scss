@@ -36,6 +36,10 @@ input:focus{
     
     border-radius: 8px;
     margin-bottom: 0px;
+
+    &::placeholder{
+        color:var(--secundary);
+    }
 }
 
 .delete-task, .add-task{

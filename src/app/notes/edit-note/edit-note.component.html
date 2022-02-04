@@ -19,7 +19,7 @@
             <div class="color-popup">
                 <button class="btn btn-close" (click)="selectColor(false)"></button>
                 <div class="color-wrapper" *ngFor="let theme of getColorNames(); let i = index">
-                    <button class="btn btn-color selector" [ngStyle]="theme.style"
+                    <button class="btn btn-color selector" [style]="getStyleColors(theme.style)"
                     (click)="setThemeColor(theme.value)">
                         <mat-icon class="icon-color-selector">fiber_smart_record</mat-icon>
                         <span class="select-color-text">{{ theme.label }}</span>
@@ -36,7 +36,6 @@
                     <mat-icon [hidden]="!isFav()">star</mat-icon>
                 </button>
                 <button type="submit" class="btn btn-primary" (click)='trySubmit()'>Salvar</button>
-                <!-- <button type="submit" class="btn btn-stay" (click)='trySubmit(false)'>Salvar e Continuar Editando</button> -->
                 <button type="submit" class="btn btn-secundary" (click)='resetForm()'>Limpar</button>
                 <button type="submit" class="btn btn-secundary" routerLink="/notes">Cancelar</button>
             </div>
